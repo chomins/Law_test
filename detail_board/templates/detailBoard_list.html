@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<form method="POST" action="{% url 'search'%}">
+    {% csrf_token %}
+    <input  type="hidden" name="identity" value={{cat_name}} ><br>
+    <input  type="text" name="search_data"  required="required" placeholder="제목"><br>
+    <input  type="submit" value="검색">
+</form>
+
+{% if error %}
+{{error}}<br>
+{% endif %}
+{{output.title}}<br>
+{{output.question}}<br>
+{{output.answer}}<br>
+
 <a href="{% url 'family_board' %}">가정법률</a><br>
 <a href="{% url 'traffic_board' %}">교통/운전</a><br>
 <a href="{% url 'government_board' %}">국가 및 지자체</a><br>
@@ -19,7 +34,10 @@
 <a href="{% url 'startup_board' %}">창업</a><br>
 <a href="{% url 'eco_board' %}">환경/에너지</a><br>
 <hr>
+<h5>{{cat_name}}</h5>
 {% for i in F_boards %}
+{{i.title}}<br>
+<br>
 {{i.question}}<br>
 <br>
 {{i.answer}}<br>
