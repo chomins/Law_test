@@ -40,6 +40,21 @@
 <br>
 <hr>
 {% endfor %}
+<div class="paginator11">
+    {%if F_boards.has_previous%}
+    <a href="?page=1">First</a>
+    <a href="?page={{F_boards.previous_page_number}}">Previous</a>
+    {%endif%}
+
+    <span>{{F_boards.number}}</span>
+    <span>of</span>
+    <span>{{F_boards.paginator.num_pages}}</span>
+
+    {%if F_boards.has_next%}
+    <a href="?page={{F_boards.next_page_number}}">Next</a>
+    <a href="?page={{F_boards.paginator.num_pages}}">Last</a>
+    {%endif%}
+</div>
 
 
 
