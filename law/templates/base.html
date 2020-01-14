@@ -2,32 +2,32 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin: 0em; border: 0em;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>pamphlaw</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 </head>
-<body>
-    <div class="whycontainer">
-        <header>
+<body style="margin: 0; height: 100%; padding: 0; background-color: white;">
+    <div class="whycontainer" style="background-color:rgb(61, 61, 61); width: 100%;">
+        <header  >
             <div class="headerleft">
-                <div class='logo'><a href="{%url 'home' %}">pamphlaw !</a></div>
-                <nav>
+                <div class='logo'><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{%url 'home' %}">pamph law</a></div>
+                <nav >
                     <ul>
-                        <li><a href="">Main</a></li>
-                        <li><a href="{% url 'family_board' %}">Law searching</a></li>
-						<li><a href="{% url 'lb_list' %}">Law board</a></li>
-						<li><a href="{% url 'mb_list' %}">Meeting board</a></li>
-                        <li><a href="{% url 'traffic_board' %}">Law searching</a></li>
-                        <li><a href="{% url 'lb_list' %}">Law board</a></li>
+                        <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:lightgray;" href="">Main</a></li>
+                        <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'family_board' %}">Law searching</a></li>
+						<li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'lb_list' %}">Law board</a></li>
+						<li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'mb_list' %}">Meeting board</a></li>
                     </ul>
                 </nav>
             </div>
@@ -46,8 +46,13 @@
 			</div>
         </header>
     </div>
+    
     {% block content %}
     {% endblock %}
-    
+    <footer style="background-color:rgb(61, 61, 61); width: 100%; height: 5.2em; padding: 0; margin-top: 6.5em; " >
+        <p>멋쟁이 사자처럼 해커톤 
+            <br>Copyright 정우 민수 종민</p>
+    </footer>
 </body>
+
 </html>
