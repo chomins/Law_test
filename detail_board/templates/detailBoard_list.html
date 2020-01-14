@@ -36,11 +36,8 @@
 <hr>
 <h5>{{cat_name}}</h5>
 {% for i in F_boards %}
-{{i.title}}<br>
+<a href="{% url 'board_detail' i.id %}">{{i.title}}</a><br>
 <br>
-{{i.question}}<br>
-<br>
-{{i.answer}}<br>
 <hr>
 {% endfor %}
 
