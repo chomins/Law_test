@@ -24,10 +24,17 @@
                 <div class='logo'><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{%url 'home' %}">pamph law</a></div>
                 <nav >
                     <ul>
+
                         <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:lightgray;" href="">Main</a></li>
                         <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'family_board' %}">Law searching</a></li>
 						<li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'lb_list' %}">Law board</a></li>
 						<li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'mb_list' %}">Meeting board</a></li>
+
+                        <li><a href="">Main</a></li>
+						<li><a href="{% url 'mb_list' %}">Meeting board</a></li>
+                        <li><a href="{% url 'traffic_board' %}">Law searching</a></li>
+                        <li><a href="{% url 'lb_list' %}">Law board</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -49,10 +56,13 @@
     
     {% block content %}
     {% endblock %}
+
     <footer style="background-color:rgb(61, 61, 61); width: 100%; height: 5.2em; padding: 0; margin-top: 6.5em; " >
         <p>멋쟁이 사자처럼 해커톤 
             <br>Copyright 정우 민수 종민</p>
     </footer>
+
+
 </body>
 
 </html>
