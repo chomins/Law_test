@@ -22,4 +22,7 @@ class MeetingBoard(models.Model):
     def __str__(self):
         return self.title
 
-
+class LB_comment(models.Model):
+    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_content = models.TextField()
+    lbcomment = models.ForeignKey(LawBoard, on_delete=models.CASCADE)

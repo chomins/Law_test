@@ -58,8 +58,9 @@ def lawboardUpdate(request, lb_id):
     return redirect('lb_list')
 
 def lawboardDetail(request, lb_id):
-    detail_lb = LawBoard.objects.get(id=lb_id)
-    return render(request, 'lawboard_detail.html',{'lb':detail_lb})
+    detail_lb = get_object_or_404(LawBoard,id=lb_id)
+    comment_lb = LB_comment.objects.filter(lbcomment= lb_id )
+    return render(request, 'lawboard_detail.html',{'lb':detail_lb, 'comments':comment_lb})
 
 def lawboardDelete(request, lb_id):
     delete_lb = LawBoard.objects.get(id=lb_id)
@@ -110,6 +111,19 @@ def lawboardScrap(request, pk):
     scraped_law.save()
     return redirect('lb_list')
 
+def lawboardCommentNew(request,lb_id):
+    comment = LB_comment()
+    user = request.user
+    comment.comment_writer = get_object_or_404(User , username= user)
+    comment.comment_content = request.POST['content']
+    comment.lbcomment = get_object_or_404(LawBoard, pk = lb_id)
+    comment.save()
+    return redirect('lb_detail',lb_id)
+
+def lawboardCommentDelete(request, comment_id):
+    delete_comment = LB_comment.objects.get(id=comment_id )
+    delete_comment.delete()
+    return redirect('/lawboard/lawboard/'+str(delete_comment.lbcomment.id))
 
 
 

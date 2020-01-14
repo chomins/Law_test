@@ -11,4 +11,37 @@
 
 <a href="{% url 'lb_edit' lb.id%}">글 수정</a><br>
 <a href="{% url 'lb_delete' lb.id%}">글 삭제</a>
+
+<br><br>
+
+<h5>Comment</h5>
+{%for comment in comments.all%}
+<table>
+    <tr>
+        <th style="padding: 10px;">
+            <img src="{{ comment.comment_writer.profile_img.url }}" alt=""
+                style="width: 35px; height: 35px; border-radius: 40%;"> <span
+                style="padding: 8px; ">{{comment.comment_writer}}</span>
+        </th>
+        <td>
+            <span>{{comment.comment_content}}</span>
+        </td>
+        <td><a href="{% url 'lb_commentd' comment.id%}">삭제하기</a></td>
+    </tr>
+</table>
+<hr>
+{% endfor %}
+
+
+{% if user.is_authenticated %}
+<!-- 로그인 상태가 아니면 댓글 못씀-->
+<form action="{% url 'lb_comment' lb.id%}" method="POST">
+    {% csrf_token %}
+    <div>
+        {{user.username}}<br>
+        <textarea name="content" class="form-control"></textarea>
+        <button type="submit">작성</button>
+    </div>
+</form>
+{% endif %}
 {%endblock%}
