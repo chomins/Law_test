@@ -11,6 +11,29 @@ def lawboardList(request):
     lb= paginator.get_page(page)
     return render(request, 'lawboard_list.html', {'lawboards': lb})
 
+def lawboardFilter(request):
+    lawboards_list = LawBoard.objects.all()
+    search_mode = request.POST.get('search_mode')
+    search_data = request.POST.get('search_data')
+    filter_result = []
+    if search_mode == 'title' :
+        for lb in lawboards_list:
+            if search_data in lb.title :
+                filter_result.append(lb)
+    elif search_mode == 'body':
+        for lb in lawboards_list:
+            if search_data in lb.body :
+                filter_result.append(lb)
+    
+    lawboards = filter_result
+    #페이지네이터
+    paginator = Paginator(lawboards,7)
+    page = request.GET.get('page')
+    paginator2 = paginator.get_page(page)
+
+    return render(request, 'lawboard_list.html', {'lawboards':paginator2})
+
+
 def lawboardNew(request):
     return render(request, 'lawboard_new.html')
 
