@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <form method="POST" id="searchFm">
+    <form method="POST" id="searchFm" action="{% url 'lb_filter'%}">
+        {% csrf_token %}
         <div class="lbSearch" style="border-style: solid;">
-            <div class="searchBases">
-                <dl>
-                    <dt>관심 법령</dt>
-                    <dd>
-                        <div= class="part">
-                            <select id="law" name="" id=""></select>
-                        </div=>
-                    </dd>
-                </dl>
-            </div>
-        </div>
+            <select name="search_mode">
+                <option value="title">제목</option>
+                <option value="body">내용</option>
+            </select>
+            <input type="text" name="search_data" style="border-radius: 5px;">
+            <button type="submit" class="btn btn-success" style="margin-left: 1%;">Search!</button>
+        </div>                
     </form>
 
     <a href="{% url 'lb_new'%}">
@@ -24,15 +21,12 @@
         <div class="rlist">
             {% for lb in lawboards%}
             <hr>
-            <a href="{%url 'lb_detail' lb.id %}">
-                <h1>제목 : {{lb.title}}</h1>
-            </a>
-            <h3>내용 : {{lb.body}}</h3>
-            <hr>
+            <a href="{%url 'lb_detail' lb.id %}"><h1>제목 : {{lb.title}}</h1></a>
+            <h3>내용 : {{lb.body}}</h3><hr>
             {%endfor%}
         </div>
     </div>
-    <div class="paginator111">
+    <div class="lawboards111">
         {%if lawboards.has_previous%}
         <a href="?page=1">First</a>
         <a href="?page={{lawboards.previous_page_number}}">Previous</a>

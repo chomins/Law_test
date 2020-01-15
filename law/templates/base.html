@@ -24,6 +24,7 @@
                 <div class='logo'><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{%url 'home' %}">pamph law</a></div>
                 <nav >
                     <ul>
+
                         <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:lightgray;" href="">Main</a></li>
                         <li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'family_board' %}">Law searching</a></li>
 						<li ><a style="font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; color:white;" href="{% url 'lb_list' %}">Law board</a></li>
@@ -49,10 +50,13 @@
     
     {% block content %}
     {% endblock %}
+
     <footer style="background-color:rgb(34, 34, 34); width: 100%; position: fixed; bottom: 0px; height: 60px;" >
         <p style="text-align: center; color: white;">멋쟁이 사자처럼 해커톤 
             <br>@Copyright 정우 민수 종민</p>
     </footer>
+
+
 </body>
 
 </html>
