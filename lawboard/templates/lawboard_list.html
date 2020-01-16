@@ -28,17 +28,18 @@
         </form>
     </div>
     </div>
-    
-    <div class="lawboards_list" style="margin-top: 50px;">
-        <div class="row" >
+    <br>
+    <hr style="border:black solid 1px;">
+    <div class="lawboards_list" style="margin-top: 50px; ">
+        <div class="row"  >
             {% for lb in lawboards%}
-            <div class="col-6">
-            <a href="{%url 'lb_detail' lb.id %}" style="text-align: left;"><p>{{lb.title}}</p></a>
+            <div class="col-6" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+            <a href="{%url 'lb_detail' lb.id %}" style="text-align: left; "><p>{{lb.title}}</p></a>
             </div>
-            <div class="col-3">
+            <div class="col-3" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
                 <p>{{lb.writer}}</p>
             </div>
-            <div class="col-3">
+            <div class="col-3" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
                 <p>{{lb.pub_date}}</p>
             </div>
             {%endfor%}

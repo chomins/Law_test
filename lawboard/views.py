@@ -84,8 +84,8 @@ def meetingboardCreate(request):
     new_mb.pub_date = timezone.datetime.now()
     new_mb.writer = request.user
     new_mb.body = request.POST['body']
+    new_mb.law = request.POST['law']
     new_mb.save()
-
     return redirect('mb_list')
 
 def meetingboardEdit(request, mb_id):

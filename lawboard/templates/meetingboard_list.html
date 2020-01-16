@@ -1,20 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    <a href="{% url 'mb_new'%}">
-        <h1>글쓰기</h1>
-    </a><br><br>
 
-    {% for mb in meetingboards%}
-    <hr>
-    <a href="{%url 'mb_detail' mb.id %}">
-        <h1>제목 : {{mb.title}}</h1>
-    </a>
-    <h3>내용 : {{mb.body}}</h3>
-    <hr>
-    {%endfor%}
+<br>
+<div class="container">
+
+    <div class="row">
+
+        <h2>유저 게시판</h2>
+    </div>
+
 
     <br>
+    <hr style="border:black solid 1px;">
+    <div class="lawboards_list" style="margin-top: 50px; ">
+        <div class="row"  >
+            {% for mb in meetingboards%}
+            <div class="col-5" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+            <a href="{%url 'mb_detail' mb.id %}" style="text-align: left; "><p>{{mb.title}}</p></a>
+            </div>
+            <div class="col-3" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+                <p>{{mb.law}}</p>
+            </div>
+            <div class="col-2" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+                <p>{{mb.writer}}</p>
+            </div>
+            <div class="col-2" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+                <p>{{mb.pub_date}}</p>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
     <div class="lawboards111">
         {%if meetingboards.has_previous%}
         <a href="?page=1">First</a>
@@ -30,6 +45,15 @@
         <a href="?page={{meetingboards.paginator.num_pages}}">Last</a>
         {%endif%}
     </div>
+    <br>
+    <div class="row">
+        <div class="col align-self-end" style="text-align: right;">
+            <a href="{% url 'mb_new'%}">
+                <img src="http://cdn.onlinewebfonts.com/svg/img_458789.png" alt="" width="40px" height="40px;" style="border-bottom: solid 3px; padding: 5px;"> 
+            </a>
+        </div>
+    </div>
+
 </div>
 
 {%endblock%}
