@@ -28,19 +28,23 @@
 </div>
 <br><br>
 
+
 <h5 style="border-top: solid rgb(163, 163, 163) 0.02px;">댓글</h5>
 {%for comment in comments.all%}
-<table>
-    <tr>
-        <th style="padding: 10px;">
+<div class="container">
+    <div class="row">
+        <div class="col-2">
             <span>{{comment.comment_writer}}</span>
-        </th>
-        <td>
+        </div>
+        <div class="col-8">
             <span>{{comment.comment_content}}</span>
-        </td>
-        <td><a href="{% url 'lb_commentd' comment.id%}">삭제하기</a></td>
-    </tr>
-</table>
+        </div>
+        <div class="col-2">
+            <span><a href="{% url 'lb_commentd' comment.id%}" style="color: black;">Del</a> </span>
+        </div>
+    </div>
+</div>
+
 <hr>
 {% endfor %}
 
