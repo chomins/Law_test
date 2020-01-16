@@ -1,3 +1,23 @@
-{{board.title}}<br>
-{{board.question}}<br>
-{{board.answer}}<br>
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container" style="margin-top:40px;">
+    <div class="row">
+      <div class="col"><h2>{{board.title}}</h2></div>
+    </div>
+    <div class="row">
+      <div class="col"><p>
+        <strong>질문</strong><br>{{board.question}}
+      </p></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>
+                <strong>답변</strong><br>{{board.answer}}
+            </p></div>
+      </div>
+  </div>
+
+
+{% endblock %}
