@@ -1,6 +1,8 @@
-<a href="{% url 'mb_new'%}">
-    <h1>글쓰기</h1>
-</a><br><br>
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="{% url 'mb_new'%}"><h1>글쓰기</h1></a><br><br>
+
 {% for mb in meetingboards%}
 <hr>
 <a href="{%url 'mb_detail' mb.id %}">
@@ -9,6 +11,7 @@
 <h3>내용 : {{mb.body}}</h3>
 <hr>
 {%endfor%}
+
 <br>
 <div class="lawboards111">
     {%if meetingboards.has_previous%}
@@ -25,3 +28,6 @@
     <a href="?page={{meetingboards.paginator.num_pages}}">Last</a>
     {%endif%}
 </div>
+
+
+{%endblock%}
