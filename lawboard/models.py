@@ -8,17 +8,20 @@ class LawBoard(models.Model):
     writer = models.ForeignKey(User,on_delete = models.CASCADE)
     body = models.TextField()
     scrap  = models.ManyToManyField(User, blank= True, related_name="LawBoard_scrap")
-
+    
 
     def __str__(self):
         return self.title
+    
+    def total_scrap(self):
+        return self.scrap.count()
 
 class MeetingBoard(models.Model):
     title = models.CharField(max_length=100)
     pub_date = models.DateTimeField('Date published', null = True)
     writer = models.ForeignKey(User,on_delete = models.CASCADE)
     body = models.TextField()
-
+    law = models.CharField(max_length=100, default='SOME STRING')
     def __str__(self):
         return self.title
 

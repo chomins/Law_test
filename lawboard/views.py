@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 
 def lawboardList(request):
     lawboards_list = LawBoard.objects.all()
+    lawboards_list.reverse()
     paginator = Paginator(lawboards_list,7)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
@@ -60,7 +61,8 @@ def lawboardUpdate(request, lb_id):
 def lawboardDetail(request, lb_id):
     detail_lb = get_object_or_404(LawBoard,id=lb_id)
     comment_lb = LB_comment.objects.filter(lbcomment= lb_id )
-    return render(request, 'lawboard_detail.html',{'lb':detail_lb, 'comments':comment_lb})
+    scrap_count = detail_lb.total_scrap()
+    return render(request, 'lawboard_detail.html',{'lb':detail_lb, 'comments':comment_lb , 'scrap_count':scrap_count})
 
 def lawboardDelete(request, lb_id):
     delete_lb = LawBoard.objects.get(id=lb_id)
@@ -70,6 +72,7 @@ def lawboardDelete(request, lb_id):
 
 def meetingboardList(request):
     meetingboards= MeetingBoard.objects.all()
+    meetingboards.reverse()
     paginator = Paginator(meetingboards,7)
     page = request.GET.get('page')
     paginator2 = paginator.get_page(page)
@@ -84,8 +87,8 @@ def meetingboardCreate(request):
     new_mb.pub_date = timezone.datetime.now()
     new_mb.writer = request.user
     new_mb.body = request.POST['body']
+    new_mb.law = request.POST['law']
     new_mb.save()
-
     return redirect('mb_list')
 
 def meetingboardEdit(request, mb_id):
