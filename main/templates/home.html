@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<section id="visual" style="width: 100%; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0.3)), url(http://www.crblaw.net/uploads/bw31509003/201701/fb85435365869463052d640b8c3b56f4_crop.jpg?t=159b5b3181e);">
-    <h2></h2>
-    <p class="fn-font" style="font-family: 'Roboto', sans-serif; font-family: 'Song Myung', serif; font-size: 2em; color: white; padding-top: 0; margin-top:40px ;">쉽고 빠른 법률검색</p>
-</section>
-
-<section id="content">
-    {% for i in latest %}
-    <div class="item">
-        <div style="text-align:center ;" class="img">
-            <img  src="https://data.silhouette-ac.com/data/thumbnails/8f/8f0218f6584480401f28d4790ffd99a7_t.jpeg">
-        </div>
+<div>
+    <section id="visual"
+        style="width: 100%; background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0.3)), url(http://www.crblaw.net/uploads/bw31509003/201701/fb85435365869463052d640b8c3b56f4_crop.jpg?t=159b5b3181e);">
+        <p class="fn-font"
+            style="font-family: 'Roboto', sans-serif; font-family: 'Song Myung', serif; font-size: 2em; color: white; padding-top: 0; margin-top:40px ;">
+            쉽고 빠른 법률검색</p>
+    </section>
+    <div style="margin-left:10%; margin-right: 10%; margin-top: 3%; margin-bottom: 5%;">
         <div>
-            <p style="text-align: center;">
-                <br>
-                <br>
-                <a href="{% url 'lb_detail' i.id %}">{{i.title}}</a></p>
+            <h2 style="font-family: 'Roboto', sans-serif; font-family: 'Song Myung', serif;">Latest Law story</h2>
         </div>
-    </div>
-    {%endfor%}
-</section>
-</div>
+        <section id="content">
 
+            {% for i in latest %}
+            <a href="{% url 'lb_detail' i.id %}">
+                <div class="card" style="width: 19rem;">
+
+                    <img src="https://data.silhouette-ac.com/data/thumbnails/8f/8f0218f6584480401f28d4790ffd99a7_t.jpeg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">title : {{i.title}}</h5>
+                        <p class="card-text">{{i.summary}}...</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="text-align: right;">
+                        <li class="list-group-item">글 보러가기</li>
+                    </ul>
+                </div>
+            </a>
+            {%endfor%}
+
+        </section>
+    </div>
+</div>
 
 {% endblock %}
