@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
+<div class="container" >
+
+    <h2><span><a href="{% url 'lb_list' %}" style="color: black;">유저 게시판</a></span></h2>
+</div>
+
 <div class="container" style="background-color: white;">
-<h4 ><span style="border-bottom: black solid 0.5px; color: cornflowerblue;"><a href="{% url 'lb_list' %}">유저 게시판</a></span></h4>
-<br><br>
 
 <h1>{{lb.title}}</h1>
 <div style="text-align: right;">
@@ -49,7 +52,9 @@
     <div style="margin-bottom: 80px;">
         {{user.username}}<br>
         <textarea name="content" class="form-control"></textarea>
-        <button type="submit">작성</button>
+        <div style="text-align: right;">
+            <button  type="submit" >작성</button>
+        </div>
     </div>
 </form>
 </div>

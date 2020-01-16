@@ -99,6 +99,7 @@ def meetingboardUpdate(request, mb_id):
     update_mb = MeetingBoard.objects.get(id = mb_id)
     update_mb.title = request.POST['title']
     update_mb.body = request.POST['body']
+    update_mb.law = request.POST['law']
     update_mb.save()
     return redirect('mb_list')
 
