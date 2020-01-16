@@ -18,7 +18,7 @@ class MeetingBoard(models.Model):
     pub_date = models.DateTimeField('Date published', null = True)
     writer = models.ForeignKey(User,on_delete = models.CASCADE)
     body = models.TextField()
-
+    law = models.CharField(max_length=100, default='SOME STRING')
     def __str__(self):
         return self.title
 

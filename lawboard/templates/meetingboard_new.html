@@ -1,8 +1,62 @@
-<h1>글작성 페이지</h1>
+{% extends 'base.html' %}
+{% block content %}
 
-<form action="{% url 'mb_create'%}" method = "POST">
-    {%csrf_token%}
-    제목 : <input type="text" name = "title"><br>
-    내용 : <textarea name="body" id="" cols="30" rows="10" value="body"></textarea><br>
-    <button type="submit">작성</button>
-</form>
+<h1 style="text-align: center; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive;">Write Page</h1>
+<div class="container">
+
+    <form action="{% url 'mb_create'%}" method = "POST">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col">
+            <div class="form-group">
+                <label >Title</label>
+                <input type="text" name = "title" class="form-control" id="Title" placeholder="제목" required="required">
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Law</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="law">
+                        <option value="가정법률">가정법률</option>
+                        <option value="교통/운전">교통/운전</option>
+                        <option value="국가 및 지자체">국가 및 지자체</option>
+                        <option value="국방/보훈">국방/보훈</option>
+                        <option value="근로/노동">근로/노동</option>
+                        <option value="금융/금전">금융/금전</option>
+                        <option value="무역/출입국">무역/출입국</option>
+                        <option value="문화/여가생활">문화/여가생활</option>
+                        <option value="민형사/소송">민형사/소송</option>
+                        <option value="복지">복지</option>
+                        <option value="부동산/임대차">부동산/임대차</option>
+                        <option value="사업">사업</option>
+                        <option value="사회안전/범죄">사회안전/범죄</option>
+                        <option value="소비자">소비자</option>
+                        <option value="아동·청소년/교육">아동·청소년/교육</option>
+                        <option value="정보통신/기술">정보통신/기술</option>
+                        <option value="창업">창업</option>
+                        <option value="환경/에너지">환경/에너지</option>
+                      </select>
+                  </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Content</label>
+                    <textarea class="form-control" name="body" id="" cols="30" rows="20" placeholder="내용"  required="required"></textarea>
+                  </div>
+            </div>
+        </div>
+        <div class="row" width=100% style="text-align: center; margin-bottom: 80px;">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-dark" style="background-color: black; color: white;">작성</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+{%endblock%}
