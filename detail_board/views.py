@@ -68,10 +68,13 @@ def family_board(request):
               
                     
     F_boards=Family_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='가정법률'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def traffic_board(request):
    
@@ -131,11 +134,14 @@ def traffic_board(request):
                     F_board.catagory='교통\운전'
                     F_board.save()
     F_boards=Traffic_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='교통\운전'
    
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def government_board(request):
    
@@ -194,11 +200,14 @@ def government_board(request):
                     F_board.catagory='국가 및 지자체'
                     F_board.save()
     F_boards=Government_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='국가 및 지자체'
     
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def army_board(request):
    
@@ -257,11 +266,14 @@ def army_board(request):
                     F_board.catagory='국방\보훈'
                     F_board.save()
     F_boards=Army_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='국방\보훈'
    
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def labor_board(request):
    
@@ -320,11 +332,14 @@ def labor_board(request):
                     F_board.catagory='근로\노동'
                     F_board.save()
     F_boards=Labor_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='근로\노동'
    
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def financial_board(request):
    
@@ -383,11 +398,14 @@ def financial_board(request):
                     F_board.catagory='금융\금전'
                     F_board.save()
     F_boards=Financial_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='금융\금전'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def trade_board(request):
    
@@ -446,11 +464,14 @@ def trade_board(request):
                     F_board.catagory='무역\출입국'
                     F_board.save()
     F_boards=Trade_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='무역\출입국'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def leisure_board(request):
    
@@ -509,11 +530,14 @@ def leisure_board(request):
                     F_board.catagory='문화\여가생활'
                     F_board.save()
     F_boards=Leisure_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='문화\여가생활'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 
 def lawsuit_board(request):
@@ -573,11 +597,14 @@ def lawsuit_board(request):
                     F_board.catagory='민형사\소송'
                     F_board.save()
     F_boards=Lawsuit_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='민형사\소송'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def welfare_board(request):
    
@@ -636,11 +663,14 @@ def welfare_board(request):
                     F_board.catagory='복지'
                     F_board.save()
     F_boards=Welfare_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='복지'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def estate_board(request):
    
@@ -699,10 +729,13 @@ def estate_board(request):
                     F_board.catagory='부동산\임대차'
                     F_board.save()
     F_boards=Estate_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='부동산\임대차'
 
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def business_board(request):
    
@@ -761,10 +794,13 @@ def business_board(request):
                     F_board.catagory='사업'
                     F_board.save()
     F_boards=Business_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='사업'
  
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def crime_board(request):
    
@@ -823,10 +859,13 @@ def crime_board(request):
                     F_board.catagory='사회안전\범죄'
                     F_board.save()
     F_boards=Crime_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='사회안전\범죄'
 
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def client_board(request):
    
@@ -885,10 +924,13 @@ def client_board(request):
                     F_board.catagory='소비자'
                     F_board.save()
     F_boards=Client_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='소비자'
 
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def children_board(request):
    
@@ -947,11 +989,14 @@ def children_board(request):
                     F_board.catagory='아동 청소년\교육'
                     F_board.save()
     F_boards=Children_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='아동 청소년\교육'
 
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def information_board(request):
    
@@ -1010,10 +1055,13 @@ def information_board(request):
                     F_board.catagory='정보통신\기술'
                     F_board.save()
     F_boards=Information_Board.objects.all()
-    cat_name='정보통신\기술'
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
+    cat_name='정보통신\기술'
 
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def startup_board(request):
    
@@ -1072,10 +1120,13 @@ def startup_board(request):
                     F_board.catagory='창업'
                     F_board.save()
     F_boards=Startup_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='창업'
 
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 
 def eco_board(request):
@@ -1135,10 +1186,13 @@ def eco_board(request):
                     F_board.catagory='환경\에너지'
                     F_board.save()
     F_boards=Eco_Board.objects.all()
+    paginator = Paginator(F_boards,7)
+    page = request.GET.get('page')
+    lb= paginator.get_page(page)
     cat_name='환경\에너지'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
 
 def search(request):
     cat_name=request.POST['identity']
