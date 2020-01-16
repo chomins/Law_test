@@ -13,62 +13,85 @@
 </form>
 
 
+
 {% if error %}
 {{error}}<br>
 {% endif %}
 {{output.title}}<br>
 {{output.question}}<br>
 {{output.answer}}<br>
-<div class="container" style="padding-bottom:70px; padding-left: 0px;">
-    <div class="row">
-        <div class="col-4" style="padding-left: 0px;" >
-        <ul class="list-group" >
-            <li class="list-group-item"><a href="{% url 'family_board' %}">가정법률</a></li>
-            <li class="list-group-item"><a href="{% url 'traffic_board' %}">교통/운전</a></li>
-            <li class="list-group-item"><a href="{% url 'government_board' %}">국가 및 지자체</a></li>
-            <li class="list-group-item"><a href="{% url 'army_board' %}">국방/보훈</a></li>
-            <li class="list-group-item"><a href="{% url 'labor_board' %}">근로/노동</a></li>
-            <li class="list-group-item"><a href="{% url 'financial_board' %}">금융/금전</a></li>
-            <li class="list-group-item"><a href="{% url 'trade_board' %}">무역/출입국</a></li>
-            <li class="list-group-item"><a href="{% url 'leisure_board' %}">문화/여가생활</a></li>
-            <li class="list-group-item"><a href="{% url 'lawsuit_board' %}">민형사/소송</a></li>
-            <li class="list-group-item"><a href="{% url 'welfare_board' %}">복지</a></li>
-            <li class="list-group-item"><a href="{% url 'estate_board' %}">부동산/임대차</a></li>
-            <li class="list-group-item"><a href="{% url 'business_board' %}">사업</a></li>
-            <li class="list-group-item"><a href="{% url 'crime_board' %}">사회안전/범죄</a></li>
-            <li class="list-group-item"><a href="{% url 'client_board' %}">소비자</a></li>
-            <li class="list-group-item"><a href="{% url 'children_board' %}">아동·청소년/교육</a></li>
-            <li class="list-group-item"><a href="{% url 'information_board' %}">정보통신/기술</a></li>
-            <li class="list-group-item"><a href="{% url 'startup_board' %}">창업</a></li>
-            <li class="list-group-item"><a href="{% url 'eco_board' %}">환경/에너지</a></li>
-          </ul>
-          </div>
-          <div class="col-8">
-            <h5 style="margin-bottom: 5px;">{{cat_name}}</h5>
-            <ul class="list-group"> 
-            {% for i in F_boards %}
-            <li class="list-group-item" style="padding:46px;"><a href="{% url 'board_detail' i.id %}">{{i.title}}</a></li>       
-            {% endfor %}
+
+<div style="display: flex; justify-content: space-between;">
+    <div class="fixed-right">
+        <div class="col" style="margin-left: 120px;">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'family_board' %}">가정법률</a></li>
+                <li class="list-group-item"><a href="{% url 'traffic_board' %}">교통/운전</a></li>
+                <li class="list-group-item"><a href="{% url 'government_board' %}">국가 및 지자체</a></li>
+                <li class="list-group-item"><a href="{% url 'army_board' %}">국방/보훈</a></li>
+                <li class="list-group-item"><a href="{% url 'labor_board' %}">근로/노동</a></li>
+                <li class="list-group-item"><a href="{% url 'financial_board' %}">금융/금전</a></li>
+                <li class="list-group-item"><a href="{% url 'trade_board' %}">무역/출입국</a></li>
+                <li class="list-group-item"><a href="{% url 'leisure_board' %}">문화/여가생활</a></li>
+                <li class="list-group-item"><a href="{% url 'lawsuit_board' %}">민형사/소송</a></li>
+                <li class="list-group-item"><a href="{% url 'welfare_board' %}">복지</a></li>
+                <li class="list-group-item"><a href="{% url 'estate_board' %}">부동산/임대차</a></li>
+                <li class="list-group-item"><a href="{% url 'business_board' %}">사업</a></li>
+                <li class="list-group-item"><a href="{% url 'crime_board' %}">사회안전/범죄</a></li>
+                <li class="list-group-item"><a href="{% url 'client_board' %}">소비자</a></li>
+                <li class="list-group-item"><a href="{% url 'children_board' %}">아동·청소년/교육</a></li>
+                <li class="list-group-item"><a href="{% url 'information_board' %}">정보통신/기술</a></li>
+                <li class="list-group-item"><a href="{% url 'startup_board' %}">창업</a></li>
+                <li class="list-group-item"><a href="{% url 'eco_board' %}">환경/에너지</a></li>
             </ul>
-            <div class="paginator11" style="text-align: right;">
-                {%if F_boards.has_previous%}
-                <a href="?page=1">First</a>
-                <a href="?page={{F_boards.previous_page_number}}">Previous</a>
-                {%endif%}
-            
-                <span>{{F_boards.number}}</span>
-                <span>of</span>
-                <span>{{F_boards.paginator.num_pages}}</span>
-            
-                {%if F_boards.has_next%}
-                <a href="?page={{F_boards.next_page_number}}">Next</a>
-                <a href="?page={{F_boards.paginator.num_pages}}">Last</a>
-                {%endif%}
-            </div>
-          </div>
+        </div>
     </div>
 
+    <div class="container" style="padding-bottom:70px; width: 100%;">
+        <div class="row">
+            <form method="POST" action="{% url 'search'%}" style="padding-bottom:0px;">
+                {% csrf_token %}
+                <div class="input-group mb-3" style="width: 350px; padding-bottom: 0px;">
+                    <input type="hidden" name="identity" value={{cat_name}}>
+                    <input type="text" class="form-control" placeholder="카테고리" aria-label="Recipient's username"
+                        aria-describedby="button-addon2" name="search_date" required="required">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                            style="padding-top:0px; border-color: black;">Serch</button>
+                    </div>
+                </div>
+            </form>
 
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 style="margin-bottom: 5px;">{{cat_name}}</h5>
+                <ul class="list-group">
+                    {% for i in F_boards %}
+                    <li class="list-group-item" style="padding:28px;"><a
+                            href="{% url 'board_detail' i.id %}">{{i.title}}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="paginator11" style="text-align: right;">
+                    {%if F_boards.has_previous%}
+                    <a href="?page=1">First</a>
+                    <a href="?page={{F_boards.previous_page_number}}">Previous</a>
+                    {%endif%}
+
+                    <span>{{F_boards.number}}</span>
+                    <span>of</span>
+                    <span>{{F_boards.paginator.num_pages}}</span>
+
+                    {%if F_boards.has_next%}
+                    <a href="?page={{F_boards.next_page_number}}">Next</a>
+                    <a href="?page={{F_boards.paginator.num_pages}}">Last</a>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </div>
 
 {% endblock %}
