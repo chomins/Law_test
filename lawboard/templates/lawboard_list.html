@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
+    
+
+
+
 <div class="container">
-    <form method="POST" id="searchFm" action="{% url 'lb_filter'%}">
-        {% csrf_token %}
-        <div class="lbSearch" style="border-style: solid;">
-            <select name="search_mode">
-                <option value="title">제목</option>
-                <option value="body">내용</option>
-            </select>
-            <input type="text" name="search_data" style="border-radius: 5px;">
-            <button type="submit" class="btn btn-success" style="margin-left: 1%;">Search!</button>
-        </div>                
-    </form>
-
-    <a href="{% url 'lb_new'%}">
-        <h1>글쓰기</h1>
-    </a>
-
-    <div class="lawboards_list">
+    <div class="row">
+    <div class="input-group mb-3">
+        <form method="POST" id="searchFm" action="{% url 'lb_filter'%}">
+            {% csrf_token %}
+            <div class="input-group-append" style="position: absolute; left: 50%; top:50%;" >
+                <select class="custom-select" id="inputGroupSelect04" name="search_mode" style="width: 120px;">
+                    <option value="title">제목</option>
+                    <option value="body">내용</option>
+                </select>
+                <input type="text" name="search_data" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" style="width: 500px;" >
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search!</button>
+        </div>
+        </form>
+    </div>
+    </div>
+    
+    <div class="lawboards_list" style="margin-top: 50px;">
         <div class="rlist">
             {% for lb in lawboards%}
             <hr>
@@ -41,6 +47,10 @@
         <a href="?page={{lawboards.paginator.num_pages}}">Last</a>
         {%endif%}
     </div>
+    
+    <a href="{% url 'lb_new'%}">
+        <h1>글쓰기</h1>
+    </a>
 
 </div>
 {%endblock%}
