@@ -4,6 +4,7 @@
 <div class="container" style="background-color: white;">
 <h4 ><span style="border-bottom: black solid 0.5px; color: cornflowerblue;"><a href="{% url 'lb_list' %}">유저 게시판</a></span></h4>
 <br><br>
+
 <h1>{{lb.title}}</h1>
 <div style="text-align: right;">
 <h5 style=" border-top: solid black 3px; background-color: rgb(211, 212, 212);">{{lb.writer}} <span style="font-size:0.5em; margin-left: 8px;">{{lb.pub_date}}</span></h5>
@@ -11,7 +12,6 @@
 <br>
 <p style="font-size: 1em;">{{lb.body}}</p>
 <div style="text-align: right;">
-
     <label id="img_category_label"class="field"for="img_category"data-value="">
         <div id="img_category"class="psuedo_select"name="img_category">
             <span class="selected"></span>
