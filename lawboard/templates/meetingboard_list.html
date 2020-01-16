@@ -1,33 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="container">
+    <a href="{% url 'mb_new'%}">
+        <h1>글쓰기</h1>
+    </a><br><br>
 
-<a href="{% url 'mb_new'%}"><h1>글쓰기</h1></a><br><br>
+    {% for mb in meetingboards%}
+    <hr>
+    <a href="{%url 'mb_detail' mb.id %}">
+        <h1>제목 : {{mb.title}}</h1>
+    </a>
+    <h3>내용 : {{mb.body}}</h3>
+    <hr>
+    {%endfor%}
 
-{% for mb in meetingboards%}
-<hr>
-<a href="{%url 'mb_detail' mb.id %}">
-    <h1>제목 : {{mb.title}}</h1>
-</a>
-<h3>내용 : {{mb.body}}</h3>
-<hr>
-{%endfor%}
+    <br>
+    <div class="lawboards111">
+        {%if meetingboards.has_previous%}
+        <a href="?page=1">First</a>
+        <a href="?page={{meetingboards.previous_page_number}}">Previous</a>
+        {%endif%}
 
-<br>
-<div class="lawboards111">
-    {%if meetingboards.has_previous%}
-    <a href="?page=1">First</a>
-    <a href="?page={{meetingboards.previous_page_number}}">Previous</a>
-    {%endif%}
+        <span>{{meetingboards.number}}</span>
+        <span>of</span>
+        <span>{{meetingboards.paginator.num_pages}}</span>
 
-    <span>{{meetingboards.number}}</span>
-    <span>of</span>
-    <span>{{meetingboards.paginator.num_pages}}</span>
-
-    {%if meetingboards.has_next%}
-    <a href="?page={{meetingboards.next_page_number}}">Next</a>
-    <a href="?page={{meetingboards.paginator.num_pages}}">Last</a>
-    {%endif%}
+        {%if meetingboards.has_next%}
+        <a href="?page={{meetingboards.next_page_number}}">Next</a>
+        <a href="?page={{meetingboards.paginator.num_pages}}">Last</a>
+        {%endif%}
+    </div>
 </div>
-
 
 {%endblock%}
