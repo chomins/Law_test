@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 import requests, pprint
 from bs4 import BeautifulSoup as BS
@@ -45,6 +45,8 @@ def family_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -54,15 +56,22 @@ def family_board(request):
                 F_board.title=title_list[i].span.text
                 F_board.answer=h
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
+              
+                    
     F_boards=Family_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='가정법률'
     global topic
     topic='가정법률'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def traffic_board(request):
    
@@ -100,6 +109,8 @@ def traffic_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -109,16 +120,21 @@ def traffic_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Traffic_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='교통/운전'
     global topic
     topic='교통/운전'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def government_board(request):
    
@@ -156,6 +172,8 @@ def government_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -165,16 +183,21 @@ def government_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Government_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='국가 및 지자체'
     global topic
     topic='국가 및 지자체'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def army_board(request):
    
@@ -212,6 +235,8 @@ def army_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -221,16 +246,21 @@ def army_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Army_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='국방/보훈'
     global topic
     topic='국방/보훈'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def labor_board(request):
    
@@ -268,6 +298,8 @@ def labor_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -277,16 +309,21 @@ def labor_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Labor_Board.objects.all()
-    paginator = Paginator(F_boards,7)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='근로/노동'
     global topic
     topic='근로/노동'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def financial_board(request):
    
@@ -324,6 +361,8 @@ def financial_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -333,16 +372,21 @@ def financial_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Financial_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='금융/금전'
     global topic
     topic='금융/금전'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def trade_board(request):
    
@@ -380,6 +424,8 @@ def trade_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -389,23 +435,28 @@ def trade_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Trade_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='무역/출입국'
     global topic
     topic='무역/출입국'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def leisure_board(request):
    
     if  len(Leisure_Board.objects.all())== 0: 
         
         
-        url='http://www.easylaw.go.kr/CSP/OnhunqueansLstRetrieve.laf?pagingType=default&onhunqnaAstSeq=810&sortType=DEFAULT&REQUEST_DATA_SINGLE_MODE=true&targetRow='
+        url='http://www.easylaw.go.kr/CSP/OnhunqueansLstRetrieve.laf?pagingType=default&onhunqnaAstSeq=87&sortType=DEFAULT&REQUEST_DATA_SINGLE_MODE=true&targetRow='
         val=1
         q_l=[]
 
@@ -436,6 +487,8 @@ def leisure_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -445,16 +498,21 @@ def leisure_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Leisure_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='문화/여가생활'
     global topic
     topic='문화/여가생활'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 
 def lawsuit_board(request):
@@ -493,6 +551,8 @@ def lawsuit_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -502,23 +562,28 @@ def lawsuit_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Lawsuit_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='민형사/소송'
     global topic
     topic='민형사/소송'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def welfare_board(request):
    
     if  len(Welfare_Board.objects.all())== 0: 
         
         
-        url='http://www.easylaw.go.kr/CSP/OnhunqueansLstRetrieve.laf?pagingType=default&onhunqnaAstSeq=910&sortType=DEFAULT&REQUEST_DATA_SINGLE_MODE=true&targetRow='
+        url='http://www.easylaw.go.kr/CSP/OnhunqueansLstRetrieve.laf?pagingType=default&onhunqnaAstSeq=97&sortType=DEFAULT&REQUEST_DATA_SINGLE_MODE=true&targetRow='
         val=1
         q_l=[]
 
@@ -549,6 +614,8 @@ def welfare_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -558,16 +625,21 @@ def welfare_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Welfare_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='복지'
     global topic
     topic='복지'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def estate_board(request):
    
@@ -602,9 +674,11 @@ def estate_board(request):
             for i in range(len(answer_list)):
                 answer= answer_list[i].a.get('href')
                 answer='http://easylaw.go.kr/CSP/'+answer
-                tmp1=requests.get(answer)
+                tmp1=requests.get(answer) 
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -614,15 +688,20 @@ def estate_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Estate_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='부동산/임대차'
     global topic
     topic='부동산/임대차'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def business_board(request):
    
@@ -660,6 +739,8 @@ def business_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -669,15 +750,20 @@ def business_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Business_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='사업'
     global topic
     topic='사업'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def crime_board(request):
    
@@ -715,6 +801,8 @@ def crime_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -724,15 +812,20 @@ def crime_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Crime_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='사회안전/범죄'
     global topic
     topic='사회안전/범죄'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def client_board(request):
    
@@ -770,6 +863,8 @@ def client_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -779,15 +874,20 @@ def client_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Client_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='소비자'
     global topic
     topic='소비자'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def children_board(request):
    
@@ -825,6 +925,8 @@ def children_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -834,16 +936,21 @@ def children_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Children_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='아동 청소년/교육'
     global topic
     topic='아동 청소년/교육'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def information_board(request):
    
@@ -881,6 +988,8 @@ def information_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -890,15 +999,20 @@ def information_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Information_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
-    cat_name='정보통신/기술'
+    cat_name='정보통신/기술'
     global topic
-    topic='정보통신/기술'
+    topic='정보통신/기술'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def startup_board(request):
    
@@ -936,6 +1050,8 @@ def startup_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -945,16 +1061,21 @@ def startup_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Startup_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='창업'
     global topic
     topic='창업'
    
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 
 def eco_board(request):
@@ -993,6 +1114,8 @@ def eco_board(request):
                 tmp1=requests.get(answer)
                 html = BS(tmp1.text, 'html.parser')
                 real=html.select('ul.question > li.qa > div.q > div.ans')
+                interest_area=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 >table.normal.st5 > tbody > tr > td.bdn > p > a   ')
+                interest_rule=html.select('html > body > div#maincontent > div#body.Wrap > div#contents.w760 > table.normal.st5 > tbody > tr > td > p')
                 h=''
                 for r in real:
                     h=r.text
@@ -1002,15 +1125,20 @@ def eco_board(request):
                 F_board.answer=h
                 F_board.title=title_list[i].span.text
                 F_board.save()
+                for r in interest_area:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_area=r.text
+                    F_board.save()
+                for r in interest_rule:
+                    F_board=Family_Board.objects.get(id=id_list[i])
+                    F_board.relevant_rule=r.text
+                    F_board.save()
     F_boards=Eco_Board.objects.all()
-    paginator = Paginator(F_boards,10)
-    page = request.GET.get('page')
-    lb = paginator.get_page(page)
     cat_name='환경/에너지'
     global topic
     topic='환경/에너지'
         
-    return render(request,'detailBoard_list.html',{'F_boards':lb, 'cat_name':cat_name})
+    return render(request,'detailBoard_list.html',{'F_boards':F_boards, 'cat_name':cat_name})
 
 def search(request):
     cat_name=request.POST['identity']
@@ -1172,3 +1300,50 @@ def board_detail(request,post_id):
 
     
     return render(request,'board_detail.html',{'board':board})
+
+def detail_scrap(request,post_id):
+    post=None
+    if topic == "가정법률":
+        post=Family_Board.objects.get(id=post_id)
+    elif topic =="교통/운전":
+        post=Traffic_Board.objects.get(id=post_id)
+    elif topic == "국가 및 지자체":
+        post=Government_Board.objects.get(id=post_id)
+    elif topic == "근로/노동":
+        post=Labor_Board.objects.get(id=post_id)
+    elif topic == "금융/금전":
+        post=Financial_Board.objects.get(id=post_id)
+    elif topic == "무역/출입국":
+        post=Trade_Board.objects.get(id=post_id)
+    elif topic == "문화/여가생활":
+        post=Leisure_Board.objects.get(id=post_id)
+    elif topic == "민형사/소송":
+        post=Lawsuit_Board.objects.get(id=post_id)
+    elif topic == "복지":
+        post=Welfare_Board.objects.get(id=post_id)
+    elif topic == "부동산/임대차":
+        post=Estate_Board.objects.get(id=post_id)
+    elif topic == "사업":
+        post=Business_Board.objects.get(id=post_id)
+    elif topic == "사회안전/범죄":
+        post=Crime_Board.objects.get(id=post_id)
+    elif topic == "소비자":
+        post=Consumer_Board.objects.get(id=post_id)
+    elif topic == "아동 청소년/교육":
+        post=Children_Board.objects.get(id=post_id)
+    elif topic == "정보통신/기술":
+        post=Information_Board.objects.get(id=post_id)
+    elif topic == "창업":
+        post=Startup_Board.objects.get(id=post_id)
+    elif topic == "환경/에너지":
+        post=Eco_Board.objects.get(id=post_id)
+    elif topic == "국방/보훈":
+        post=Army_Board.objects.get(id=post_id)
+    
+    if post.scrap.filter(username=request.user.username).exists():
+                post.scrap.remove(request.user)    
+    else:
+                post.scrap.add(request.user)
+       
+    post.save()
+    return redirect('board_detail', post_id )
