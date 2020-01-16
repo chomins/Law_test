@@ -65,8 +65,8 @@ def mypage(request, pk):
     scrapped_startup=request.user.startup_scrap.all()
     scrapped_eco=request.user.eco_scrap.all()
     
-    tmp=scrapped_family+scrapped_traffic
-    print(tmp)
+    
+ 
 
 
     return render(request, 'mypage.html', {'mypage':mypage , 'scrapped_lawboard': scrapped_lawboard})
