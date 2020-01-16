@@ -24,5 +24,6 @@ urlpatterns = [
     path('eco_board/', views.eco_board, name="eco_board"),
     path('search/', views.search, name="search"),
     path('board_detail/<int:post_id>', views.board_detail, name="board_detail"),
+    path('detail_scrap/<int:post_id>', views.detail_scrap, name="detail_scrap"),
 
     ]

@@ -1,19 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <body>
-    <h1>회원가입</h1>
-    <form method="POST" action="{% url 'signup' %}">
-        {% csrf_token %}
+    
+    <h1 style="text-align: center; font-size: 10em; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; ">Phmp Law !</h1>
+    <br>
+    <br>
+        <div class="container">
+            <form method="POST" action="{% url 'signup' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col" style="text-align: center;">
+                  <div class="form-group">
+                    <input type="text" name="username" id="email" class="input" required="required" placeholder="Your id" size="50">
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col" style="text-align: center;">
+                    <div class="form-group">
+                 <input type="password" name="password" id="password" class="inpt" required="required" placeholder="Your password" size="50" >
+                </div>
+                </div>
+              </div>
 
-            아이디를 입력하세요 : <input type="text" name="username" id="email" class="inpt" required="required"
-                placeholder="Your id"><br>
-            패스워드를 입력하세요 : <input type="password" name="password1" id="password" class="inpt" required="required"
-                placeholder="Your password"><br>
-            패스워드를 입력하세요 : <input type="password" name="password2" id="password" class="inpt" required="required"
-                placeholder="confirm password"><br>
-            <div class="submit-wrap">
-                 <input class="btn btn-primary" type="submit" value="회원가입">
-
-            </div>
-        </form>
-        <br>
-        <a href="{% url 'home'%}">홈</a>
+              <div class="row">
+                <div class="col" style="text-align: center;">
+                <div class="form-group">
+                 <input type="password" name="password" id="password" class="inpt" required="required" placeholder="Check Your password" size="50" >
+                </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col" style="text-align: center; ">
+                  <div class="submit-wrap">
+                    <button type="submit" class="btn btn-outline-dark" style="padding:10px; margin-top: 30px; margin-left: 10px;">Sign up</button>
+                  </div>
+                </div>
+              </div>
+        
+            </form>
+           
+          </div>
+          <br>
+          <h2 style="text-align: center;"><a href="{% url 'home'%}" style="color:black; font-size: 3em; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive;">Home</a></h2>
 </body>
+
+{% endblock %}

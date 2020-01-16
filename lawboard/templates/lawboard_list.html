@@ -1,26 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container" style="padding-top: 10px; padding-bottom: 10px;">
-    <form method="POST" id="searchFm" action="{% url 'lb_filter'%}">
-        {% csrf_token %}
-        <div class="lbSearch" style="border-style: solid;">
-            <select name="search_mode">
-                <option value="title">제목</option>
-                <option value="body">내용</option>
-            </select>
-            <input type="text" name="search_data" style="border-radius: 5px;">
-            <button type="submit" class="btn btn-success" style="margin-left: 1%;">Search!</button>
-        </div>                
-    </form>
 
-
-
-    
-
-
-
+<br>
 <div class="container">
+
+    <div class="row">
+
+        <h2>유저 게시판</h2>
+    </div>
+
+
     <div class="row">
     <div class="input-group mb-3">
         <form method="POST" id="searchFm" action="{% url 'lb_filter'%}">
@@ -31,18 +21,27 @@
                     <option value="body">내용</option>
                 </select>
                 <input type="text" name="search_data" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" style="width: 500px;" >
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search!</button>
+          <button type="submit" id="button-addon2" style="border: none; margin-left: 8px; margin-bottom: 4px;">
+              <img src="https://www.pinclipart.com/picdir/middle/91-919100_search-prism-learning-solutions-search-icon-svg-free.png" alt="" width="40px" height="40px">
+            </button>
         </div>
         </form>
     </div>
     </div>
-    
-    <div class="lawboards_list" style="margin-top: 50px;">
-        <div class="rlist">
+    <br>
+    <hr style="border:black solid 1px;">
+    <div class="lawboards_list" style="margin-top: 50px; ">
+        <div class="row"  >
             {% for lb in lawboards%}
-            <hr>
-            <a href="{%url 'lb_detail' lb.id %}"><h1>제목 : {{lb.title}}</h1></a>
-            <h3>내용 : {{lb.body}}</h3><hr>
+            <div class="col-6" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+            <a href="{%url 'lb_detail' lb.id %}" style="text-align: left; "><p>{{lb.title}}</p></a>
+            </div>
+            <div class="col-3" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+                <p>{{lb.writer}}</p>
+            </div>
+            <div class="col-3" style="border-bottom: solid rgb(163, 163, 163) 0.02px; margin-top: 6px;">
+                <p>{{lb.pub_date}}</p>
+            </div>
             {%endfor%}
         </div>
     </div>
@@ -61,10 +60,14 @@
         <a href="?page={{lawboards.paginator.num_pages}}">Last</a>
         {%endif%}
     </div>
-    
-    <a href="{% url 'lb_new'%}">
-        <h1>글쓰기</h1>
-    </a>
+    <br>
+    <div class="row">
+        <div class="col align-self-end" style="text-align: right;">
+            <a href="{% url 'lb_new'%}">
+                <img src="http://cdn.onlinewebfonts.com/svg/img_458789.png" alt="" width="40px" height="40px;" style="border-bottom: solid 3px; padding: 5px;"> 
+            </a>
+        </div>
+    </div>
 
 </div>
 {%endblock%}
