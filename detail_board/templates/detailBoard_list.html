@@ -3,12 +3,7 @@
 
 
 
-{% if error %}
-{{error}}<br>
-{% endif %}
-{{output.title}}<br>
-{{output.question}}<br>
-{{output.answer}}<br>
+
 
 <div style="display: flex; justify-content: space-between;">
     <div style="margin-left:40px ;">
@@ -50,6 +45,12 @@
                     </div>
                 </div>
             </form>
+            {% if error %}
+{{error}}<br>
+{% endif %}
+{{output.title}}<br>
+{{output.question}}<br>
+{{output.answer}}<br>
 
         </div>
         <div class="row">
@@ -58,7 +59,7 @@
                 <ul class="list-group">
                     {% for i in F_boards %}
                     <li class="list-group-item" style="padding:28px;"><a
-                            href="{% url 'board_detail' i.id %}">{{i.title}}</a></li>
+                            href="{% url 'board_detail' i.id cat_name %}">{{i.title}}</a></li>
                     {% endfor %}
                 </ul>
                 <div class="paginator11" style="text-align: right;">

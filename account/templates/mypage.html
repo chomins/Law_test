@@ -10,6 +10,10 @@
 {%endfor%}
 <hr>
 <br>
+<h3>스크랩한 법률들</h3>
+{% for i in scrapped_detailboards %}
+{{i.title}}
+{% endfor %}
 <a href="{% url 'home'%}">홈</a>
 
 {%endblock%}
