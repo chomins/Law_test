@@ -1,20 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>detail page</h1>
+<br>
+<div class="container" style="background-color: white;">
+<h4 ><span style="border-bottom: black solid 0.5px; color: cornflowerblue;"><a href="{% url 'lb_list' %}">유저 게시판</a></span></h4>
 <br><br>
-<h1>제목 : {{lb.title}}</h1>
-<h7>작성 시각 : {{lb.pub_date}}</h7>
-<h7>작성자 : {{lb.writer}}</h7>
-<p>내용 : {{lb.body}}</p>
+<h1>{{lb.title}}</h1>
+<div style="text-align: right;">
+<h5 style=" border-top: solid black 3px; background-color: rgb(224, 243, 255);">{{lb.writer}} <span style="font-size:0.5em; margin-left: 8px;">{{lb.pub_date}}</span></h5>
+</div>
+<br>
+<p style="font-size: 1em;">{{lb.body}}</p>
+<div style="text-align: right;">
 
-<a href="{% url 'lb_scrap' lb.id%}">글 스크랩하기</a><br>
-
-<a href="{% url 'lb_edit' lb.id%}">글 수정</a><br>
-<a href="{% url 'lb_delete' lb.id%}">글 삭제</a>
-
+    <label id="img_category_label"class="field"for="img_category"data-value="">
+        <div id="img_category"class="psuedo_select"name="img_category">
+            <span class="selected"></span>
+            <ul id="img_category_options"class="options">
+                <li class="option"data-value="opt_1"><a href="{% url 'lb_scrap' lb.id%}" style="color: black; font-family: 'Sunflower', sans-serif;">스크랩 </a></li>
+                <li class="option"data-value="opt_2"><a href="{% url 'lb_edit' lb.id%} " style="color: black; font-family: 'Sunflower', sans-serif;">수정 </a></li>
+                <li class="option"data-value="opt_2"><a href="{% url 'lb_delete' lb.id%}" style="color: black; font-family: 'Sunflower', sans-serif;">삭제</a></li>
+            </ul>
+        </div>
+    </label>
+</div>
 <br><br>
 
-<h5>Comment</h5>
+<h5>댓글</h5>
 {%for comment in comments.all%}
 <table>
     <tr>
@@ -35,11 +46,12 @@
 <!-- 로그인 상태가 아니면 댓글 못씀-->
 <form action="{% url 'lb_comment' lb.id%}" method="POST">
     {% csrf_token %}
-    <div>
+    <div style="margin-bottom: 80px;">
         {{user.username}}<br>
         <textarea name="content" class="form-control"></textarea>
         <button type="submit">작성</button>
     </div>
 </form>
+</div>
 {% endif %}
 {%endblock%}
