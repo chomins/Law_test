@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 def lawboardList(request):
     lawboards_list = LawBoard.objects.all()
-    paginator = Paginator(lawboards_list,3)
+    paginator = Paginator(lawboards_list,7)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     return render(request, 'lawboard_list.html', {'lawboards': lb})
