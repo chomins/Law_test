@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <form method="POST" action="{% url 'search'%}">
     {% csrf_token %}
         <div class="input-group mb-3" style="text-align: center; margin-left: 13px; margin-top: 20px;">
@@ -69,4 +70,5 @@
 
 
 </div>
+
 {% endblock %}
