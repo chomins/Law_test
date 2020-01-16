@@ -70,7 +70,10 @@ def lawboardDelete(request, lb_id):
 
 def meetingboardList(request):
     meetingboards= MeetingBoard.objects.all()
-    return render(request, 'Meetingboard_list.html', {'meetingboards': meetingboards})
+    paginator = Paginator(meetingboards,7)
+    page = request.GET.get('page')
+    paginator2 = paginator.get_page(page)
+    return render(request, 'Meetingboard_list.html', {'meetingboards':paginator2})
 
 def meetingboardNew(request):
     return render(request, 'meetingboard_new.html')
@@ -96,11 +99,12 @@ def meetingboardUpdate(request, mb_id):
     update_mb.save()
     return redirect('mb_list')
 
-def meetingboardDetail(request, lb_id):
+def meetingboardDetail(request, mb_id):
     detail_mb = MeetingBoard.objects.get(id=mb_id)
-    return render(request, 'meetingboard_detail.html',{'lb':detail_mb})
+    comment_mb = MB_comment.objects.filter(mbcomment= mb_id )
+    return render(request, 'meetingboard_detail.html',{'mb':detail_mb, 'comments':comment_mb})
 
-def meetingboardDelete(request, lb_id):
+def meetingboardDelete(request, mb_id):
     delete_mb = MeetingBoard.objects.get(id=mb_id)
     delete_mb.delete()
     return redirect('mb_list')
@@ -125,5 +129,17 @@ def lawboardCommentDelete(request, comment_id):
     delete_comment.delete()
     return redirect('/lawboard/lawboard/'+str(delete_comment.lbcomment.id))
 
+def meetingboardCommentNew(request,mb_id):
+    comment = MB_comment()
+    user = request.user
+    comment.comment_writer = get_object_or_404(User , username= user)
+    comment.comment_content = request.POST['content']
+    comment.mbcomment = get_object_or_404(MeetingBoard, pk = mb_id)
+    comment.save()
+    return redirect('mb_detail',mb_id)
 
+def meetingboardCommentDelete(request, comment_id):
+    delete_comment = MB_comment.objects.get(id=comment_id )
+    delete_comment.delete()
+    return redirect('/lawboard/meetingboard/'+str(delete_comment.mbcomment.id))
 

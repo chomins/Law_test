@@ -12,16 +12,18 @@ urlpatterns = [
     path('lawboard/filter', views.lawboardFilter, name="lb_filter"),
     path('lawboard/new_comment/<int:lb_id>', views.lawboardCommentNew, name="lb_comment"),
     path('lawboard/delete_comment/<int:comment_id>', views.lawboardCommentDelete, name="lb_commentd"),
-
+    path('lawboard/scrap/<int:pk>',views.lawboardScrap, name="lb_scrap"),
 
     path('meetingboard', views.meetingboardList , name="mb_list"),
     path('meetingboard/new', views.meetingboardNew , name="mb_new"),
     path('meetingboard/create', views.meetingboardCreate , name="mb_create"),
-    path('meetingboard/edit/<int:lb_id>', views.meetingboardEdit , name="mb_edit"),
-    path('meetingboard/update/<int:lb_id>', views.meetingboardUpdate , name="mb_update"),
-    path('meetingboard/<int:lb_id>', views.meetingboardDetail, name="mb_detail"),
-    path('meetingboard/delete/<int:lb_id>', views.meetingboardDelete, name="mb_delete"),
-    path('lawboard/scrap/<int:pk>',views.lawboardScrap, name="lb_scrap"),
+    path('meetingboard/edit/<int:mb_id>', views.meetingboardEdit , name="mb_edit"),
+    path('meetingboard/update/<int:mb_id>', views.meetingboardUpdate , name="mb_update"),
+    path('meetingboard/<int:mb_id>', views.meetingboardDetail, name="mb_detail"),
+    path('meetingboard/delete/<int:mb_id>', views.meetingboardDelete, name="mb_delete"),
+    path('meetingboard/new_comment/<int:mb_id>',views.meetingboardCommentNew, name="mb_comment"),
+    path('meetingboard/delete_comment/<int:comment_id>', views.meetingboardCommentDelete, name="mb_commentd"),
+
     
 
     

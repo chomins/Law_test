@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<form method="POST" action="{% url 'search'%}">
+    {% csrf_token %}
+        <div class="input-group mb-3" style="text-align: center; margin-left: 13px; margin-top: 20px;">
+            <input  type="hidden" name="identity" value={{cat_name}} >
+            <input type="text" class="form-control" placeholder="카테고리" aria-label="Recipient's username" aria-describedby="button-addon2" name="search_date" required="required" >
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="padding-top:0px; border-color: black;">Serch</button>
+            </div>
+          </div>
+</form>
+
 
 
 {% if error %}
@@ -82,4 +93,5 @@
 
     </div>
 </div>
+
 {% endblock %}
