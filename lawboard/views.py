@@ -27,7 +27,7 @@ def lawboardFilter(request):
     
     lawboards = filter_result
     #페이지네이터
-    paginator = Paginator(lawboards,7)
+    paginator = Paginator(lawboards,15)
     page = request.GET.get('page')
     paginator2 = paginator.get_page(page)
 

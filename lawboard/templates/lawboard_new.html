@@ -1,11 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>글작성 페이지</h1>
 
-<form action="{% url 'lb_create'%}" method = "POST">
-    {%csrf_token%}
-    제목 : <input type="text" name = "title"><br>
-    내용 : <textarea name="body" id="" cols="30" rows="10" value="body"></textarea><br>
-    <button type="submit">작성</button>
-</form>
+<div class="container">
+
+    <form action="{% url 'lb_create'%}" method = "POST">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col">
+            <div class="form-group">
+                <label >Title</label>
+                <input type="text" name = "title" class="form-control" id="Title" placeholder="제목" required="required">
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Scrap</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Content</label>
+                    <textarea class="form-control" name="body" id="" cols="30" rows="20" placeholder="내용"  required="required"></textarea>
+                  </div>
+            </div>
+        </div>
+        <div class="row" width=100% style="text-align: center;">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-dark" style="background-color: black; color: white;">작성</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
 {%endblock%}
