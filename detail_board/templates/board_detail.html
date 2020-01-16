@@ -17,6 +17,11 @@
                 <strong>답변</strong><br>{{board.answer}}
             </p></div>
       </div>
+      <strong>관련생활분야</strong><br>
+      {{board.relevant_area}}<br>
+      <strong>관련법령</strong><br>
+      {{board.relevant_rule}}<br>
+      <a href="{% url 'detail_scrap' board.id %}">scrap</a>
   </div>
 
 
