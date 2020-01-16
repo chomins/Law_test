@@ -1,17 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form method="POST" action="{% url 'search'%}">
-    {% csrf_token %}
-        <div class="input-group mb-3" style="text-align: center; margin-left: 13px; margin-top: 20px;">
-            <input  type="hidden" name="identity" value={{cat_name}} >
-            <input type="text" class="form-control" placeholder="카테고리" aria-label="Recipient's username" aria-describedby="button-addon2" name="search_date" required="required" >
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="padding-top:0px; border-color: black;">Serch</button>
-            </div>
-          </div>
-</form>
-
 
 
 {% if error %}
@@ -22,8 +11,8 @@
 {{output.answer}}<br>
 
 <div style="display: flex; justify-content: space-between;">
-    <div class="fixed-right">
-        <div class="col" style="margin-left: 120px;">
+    <div style="margin-left:40px ;">
+        <div class="col" >
             <ul class="list-group">
                 <li class="list-group-item"><a href="{% url 'family_board' %}">가정법률</a></li>
                 <li class="list-group-item"><a href="{% url 'traffic_board' %}">교통/운전</a></li>
@@ -47,7 +36,7 @@
         </div>
     </div>
 
-    <div class="container" style="padding-bottom:70px; width: 100%;">
+    <div class="container" style="padding-bottom:70px; width: 100%; margin-right: 400px;">
         <div class="row">
             <form method="POST" action="{% url 'search'%}" style="padding-bottom:0px;">
                 {% csrf_token %}
