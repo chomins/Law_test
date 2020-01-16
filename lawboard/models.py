@@ -26,3 +26,8 @@ class LB_comment(models.Model):
     comment_writer = models.ForeignKey(User, on_delete=models.CASCADE)
     comment_content = models.TextField()
     lbcomment = models.ForeignKey(LawBoard, on_delete=models.CASCADE)
+
+class MB_comment(models.Model):
+    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_content = models.TextField()
+    mbcomment = models.ForeignKey(MeetingBoard, on_delete=models.CASCADE)
