@@ -9,6 +9,8 @@ class LawBoard(models.Model):
     body = models.TextField()
     scrap  = models.ManyToManyField(User, blank= True, related_name="LawBoard_scrap")
     
+    def summary(self):
+        return self.body[:10]
 
     def __str__(self):
         return self.title
