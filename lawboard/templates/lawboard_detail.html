@@ -8,7 +8,7 @@
 <p>내용 : {{lb.body}}</p>
 
 <a href="{% url 'lb_scrap' lb.id%}">글 스크랩하기</a><br>
-
+<h5>스크랩 수 : {{scrap_count}}</h5>
 <a href="{% url 'lb_edit' lb.id%}">글 수정</a><br>
 <a href="{% url 'lb_delete' lb.id%}">글 삭제</a>
 

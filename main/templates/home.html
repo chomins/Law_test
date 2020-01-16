@@ -6,6 +6,7 @@
 </section>
 
 <section id="content">
+    {% for i in latest %}
     <div class="item">
         <div style="text-align:center ;" class="img">
             <img  src="https://data.silhouette-ac.com/data/thumbnails/8f/8f0218f6584480401f28d4790ffd99a7_t.jpeg">
@@ -14,31 +15,10 @@
             <p style="text-align: center;">
                 <br>
                 <br>
-                <a href="" style="color:black;">Today's Hit Board 1</a></p>
+                <a href="{% url 'lb_detail' i.id %}">{{i.title}}</a></p>
         </div>
     </div>
-    <div class="item">
-        <div style="text-align:center ;" class="img">
-            <img  src="https://data.silhouette-ac.com/data/thumbnails/8f/8f0218f6584480401f28d4790ffd99a7_t.jpeg">
-        </div>
-        <div>
-            <p style="text-align: center;">
-                <br>
-                <br>
-                <a href="" style="color:black;">Today's Hit Board 2</a></p>
-        </div>
-    </div>
-    <div class="item">
-        <div style="text-align:center ;" class="img">
-            <img  src="https://data.silhouette-ac.com/data/thumbnails/8f/8f0218f6584480401f28d4790ffd99a7_t.jpeg">
-        </div>
-        <div>
-            <p style="text-align: center;">
-                <br>
-                <br>
-                <a href="" style="color:black;">Today's Hit Board 3</a></p>
-        </div>
-    </div>
+    {%endfor%}
 </section>
 </div>
 
