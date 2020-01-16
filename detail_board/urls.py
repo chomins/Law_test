@@ -23,7 +23,7 @@ urlpatterns = [
     path('startup_board/', views.startup_board, name="startup_board"),
     path('eco_board/', views.eco_board, name="eco_board"),
     path('search/', views.search, name="search"),
-    path('board_detail/<int:post_id>', views.board_detail, name="board_detail"),
-    path('detail_scrap/<int:post_id>', views.detail_scrap, name="detail_scrap"),
+    path('board_detail/<int:post_id>/<str:cat_name>', views.board_detail, name="board_detail"),
+    path('detail_scrap/<int:post_id>/<str:cat_name>', views.detail_scrap, name="detail_scrap"),
 
     ]
