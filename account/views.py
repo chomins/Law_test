@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
+from detail_board.models import *
 
 def login(request):
     if request.method == 'POST':
@@ -45,6 +46,29 @@ def mypage(request, pk):
     mypage = User.objects.get(pk=pk)
     lawboard = User.objects.get(username= request.user.username)
     scrapped_lawboard = lawboard.LawBoard_scrap.all()
+    
+    scrapped_family=request.user.family_scrap.all()
+    scrapped_traffic=request.user.traffic_scrap.all()
+    scrapped_government=request.user.government_scrap.all()
+    scrapped_army=request.user.army_scrap.all()
+    scrapped_labor=request.user.labor_scrap.all()
+    scrapped_financial=request.user.financial_scrap.all()
+    scrapped_trade=request.user.trade_scrap.all()
+    scrapped_leisure=request.user.leisure_scrap.all()
+    scrapped_lawsuit=request.user.lawsuit_scrap.all()
+    scrapped_welfare=request.user.welfare_scrap.all()
+    scrapped_estate=request.user.estate_scrap.all()
+    scrapped_business=request.user.business_scrap.all()
+    scrapped_crime=request.user.crime_scrap.all()
+    scrapped_client=request.user.client_scrap.all()
+    scrapped_information=request.user.information_scrap.all()
+    scrapped_startup=request.user.startup_scrap.all()
+    scrapped_eco=request.user.eco_scrap.all()
+    
+    tmp=scrapped_family+scrapped_traffic
+    print(tmp)
+
+
     return render(request, 'mypage.html', {'mypage':mypage , 'scrapped_lawboard': scrapped_lawboard})
 
 
