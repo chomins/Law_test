@@ -1,32 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
-<div class="container" >
+<div class="container">
 
     <h2><span><a href="{% url 'lb_list' %}" style="color: black;">유저 게시판</a></span></h2>
 </div>
 
 <div class="container" style="background-color: white;">
 
-<h1>{{lb.title}}</h1>
-<div style="text-align: right;">
-<h5 style=" border-top: solid black 3px; background-color: rgb(211, 212, 212);">{{lb.writer}} <span style="font-size:0.5em; margin-left: 8px;">{{lb.pub_date}}</span></h5>
-</div>
-<br>
-<p style="font-size: 1em;">{{lb.body}}</p>
-<div style="text-align: right;">
-    <label id="img_category_label"class="field"for="img_category"data-value="">
-        <div id="img_category"class="psuedo_select"name="img_category">
-            <span class="selected"></span>
-            <ul id="img_category_options"class="options">
-                <li class="option"data-value="opt_1"><a href="{% url 'lb_scrap' lb.id%}" style="color: black; font-family: 'Sunflower', sans-serif;">스크랩 </a></li>
-                <li class="option"data-value="opt_2"><a href="{% url 'lb_edit' lb.id%} " style="color: black; font-family: 'Sunflower', sans-serif;">수정 </a></li>
-                <li class="option"data-value="opt_2"><a href="{% url 'lb_delete' lb.id%}" style="color: black; font-family: 'Sunflower', sans-serif;">삭제</a></li>
-            </ul>
-        </div>
-    </label>
-</div>
-<br><br>
+    <h1>{{lb.title}}</h1>
+    <div style="text-align: right;">
+        <h5 style=" border-top: solid black 3px; background-color: rgb(211, 212, 212);">{{lb.writer}} <span
+                style="font-size:0.5em; margin-left: 8px;">{{lb.pub_date}}</span></h5>
+    </div>
+    <br>
+    
+    관련법률: <a href="{% url 'board_detail' ib.id ib.catagory %}">{{ib.title}}</a>
+    <p style="font-size: 1em;">{{lb.body}}</p>
+    <div style="text-align: right;">
+        <label id="img_category_label" class="field" for="img_category" data-value="">
+            <div id="img_category" class="psuedo_select" name="img_category">
+                <span class="selected"></span>
+                <ul id="img_category_options" class="options">
+                    <li class="option" data-value="opt_1"><a href="{% url 'lb_scrap' lb.id%}"
+                            style="color: black; font-family: 'Sunflower', sans-serif;">스크랩 </a></li>
+                    <li class="option" data-value="opt_2"><a href="{% url 'lb_edit' lb.id%} "
+                            style="color: black; font-family: 'Sunflower', sans-serif;">수정 </a></li>
+                    <li class="option" data-value="opt_2"><a href="{% url 'lb_delete' lb.id%}"
+                            style="color: black; font-family: 'Sunflower', sans-serif;">삭제</a></li>
+                </ul>
+            </div>
+        </label>
+    </div>
+    <br><br>
 
 
 <h5 style="border-top: solid rgb(163, 163, 163) 0.02px;">댓글</h5>
@@ -49,18 +55,19 @@
 {% endfor %}
 
 
-{% if user.is_authenticated %}
-<!-- 로그인 상태가 아니면 댓글 못씀-->
-<form action="{% url 'lb_comment' lb.id%}" method="POST">
-    {% csrf_token %}
-    <div style="margin-bottom: 80px;">
-        {{user.username}}<br>
-        <textarea name="content" class="form-control"></textarea>
-        <div style="text-align: right;">
-            <button  type="submit" >작성</button>
+
+    {% if user.is_authenticated %}
+    <!-- 로그인 상태가 아니면 댓글 못씀-->
+    <form action="{% url 'lb_comment' lb.id%}" method="POST">
+        {% csrf_token %}
+        <div style="margin-bottom: 80px;">
+            {{user.username}}<br>
+            <textarea name="content" class="form-control"></textarea>
+            <div style="text-align: right;">
+                <button type="submit">작성</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
 {% endif %}
 {%endblock%}

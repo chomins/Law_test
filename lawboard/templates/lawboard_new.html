@@ -1,44 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 style="text-align: center; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive;">Write Page</h1>
+<h1 style="text-align: center; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive;">Write Page
+</h1>
 <div class="container">
 
-    <form action="{% url 'lb_create'%}" method = "POST">
+    <form action="{% url 'lb_create'%}" method="POST">
+
         {%csrf_token%}
         <div class="row">
             <div class="col">
-            <div class="form-group">
-                <label >Title</label>
-                <input type="text" name = "title" class="form-control" id="Title" placeholder="제목" required="required">
-              </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" id="Title" placeholder="제목"
+                        required="required">
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Scrap</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>가정법률</option>
-                      <option>교통/운전</option>
-                      <option>국가 및 지자체</option>
-                      <option>국방/보훈</option>
-                      <option>근로/노동</option>
-                      <option>금융/금전</option>
-                      <option>무역/출입국</option>
-                      <option>문화/여가생활</option>
-                      <option>민형사/소송</option>
-                      <option>복지</option>
-                      <option>부동산/임대차</option>
-                      <option>사업</option>
-                      <option>사회안전/범죄</option>
-                      <option>소비자</option>
-                      <option>아동·청소년/교육</option>
-                      <option>정보통신/기술</option>
-                      <option>창업</option>
-                      <option>환경/에너지</option>
+                    <select name='bring' class="form-control" id="exampleFormControlSelect1">
+                        {% for i in tmp%}
+                        <option  value='{{i.title}}'>{{i.title}}</option>
+                        {%endfor%}
                     </select>
-                  </div>
+                </div>
             </div>
 
         </div>
@@ -46,17 +34,24 @@
             <div class="col">
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Content</label>
-                    <textarea class="form-control" name="body" id="" cols="30" rows="20" placeholder="내용"  required="required"></textarea>
-                  </div>
+                    <textarea class="form-control" name="body" id="" cols="30" rows="20" placeholder="내용"
+                        required="required"></textarea>
+                </div>
             </div>
         </div>
         <div class="row" width=100% style="text-align: center;">
             <div class="col">
-                <button type="submit" class="btn btn-outline-dark" style="background-color: black; color: white;">작성</button>
+                <button type="submit" class="btn btn-outline-dark"
+                    style="background-color: black; color: white;">작성</button>
             </div>
         </div>
-        
+
     </form>
 </div>
+
+<script>
+    var test=getElementById("exampleFormControlSelect1").value;
+</script>
+
 
 {%endblock%}
