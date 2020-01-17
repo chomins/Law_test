@@ -68,7 +68,7 @@ def family_board(request):
               
                     
     F_boards=Family_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='가정법률'
@@ -134,7 +134,7 @@ def traffic_board(request):
                     F_board.catagory='교통\운전'
                     F_board.save()
     F_boards=Traffic_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='교통\운전'
@@ -200,7 +200,7 @@ def government_board(request):
                     F_board.catagory='국가 및 지자체'
                     F_board.save()
     F_boards=Government_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='국가 및 지자체'
@@ -266,7 +266,7 @@ def army_board(request):
                     F_board.catagory='국방\보훈'
                     F_board.save()
     F_boards=Army_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='국방\보훈'
@@ -332,7 +332,7 @@ def labor_board(request):
                     F_board.catagory='근로\노동'
                     F_board.save()
     F_boards=Labor_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='근로\노동'
@@ -398,7 +398,7 @@ def financial_board(request):
                     F_board.catagory='금융\금전'
                     F_board.save()
     F_boards=Financial_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='금융\금전'
@@ -464,7 +464,7 @@ def trade_board(request):
                     F_board.catagory='무역\출입국'
                     F_board.save()
     F_boards=Trade_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='무역\출입국'
@@ -530,7 +530,7 @@ def leisure_board(request):
                     F_board.catagory='문화\여가생활'
                     F_board.save()
     F_boards=Leisure_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='문화\여가생활'
@@ -597,7 +597,7 @@ def lawsuit_board(request):
                     F_board.catagory='민형사\소송'
                     F_board.save()
     F_boards=Lawsuit_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='민형사\소송'
@@ -663,7 +663,7 @@ def welfare_board(request):
                     F_board.catagory='복지'
                     F_board.save()
     F_boards=Welfare_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='복지'
@@ -729,7 +729,7 @@ def estate_board(request):
                     F_board.catagory='부동산\임대차'
                     F_board.save()
     F_boards=Estate_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='부동산\임대차'
@@ -794,7 +794,7 @@ def business_board(request):
                     F_board.catagory='사업'
                     F_board.save()
     F_boards=Business_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='사업'
@@ -859,7 +859,7 @@ def crime_board(request):
                     F_board.catagory='사회안전\범죄'
                     F_board.save()
     F_boards=Crime_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='사회안전\범죄'
@@ -924,7 +924,7 @@ def client_board(request):
                     F_board.catagory='소비자'
                     F_board.save()
     F_boards=Client_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='소비자'
@@ -989,7 +989,7 @@ def children_board(request):
                     F_board.catagory='아동 청소년\교육'
                     F_board.save()
     F_boards=Children_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='아동 청소년\교육'
@@ -1055,7 +1055,7 @@ def information_board(request):
                     F_board.catagory='정보통신\기술'
                     F_board.save()
     F_boards=Information_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='정보통신\기술'
@@ -1120,7 +1120,7 @@ def startup_board(request):
                     F_board.catagory='창업'
                     F_board.save()
     F_boards=Startup_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='창업'
@@ -1186,7 +1186,7 @@ def eco_board(request):
                     F_board.catagory='환경\에너지'
                     F_board.save()
     F_boards=Eco_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='환경\에너지'
@@ -1201,110 +1201,131 @@ def search(request):
     error=''
     if cat_name == "가정법률":
         try:
-            output=Family_Board.objects.get(title=title)
+            family=Family_Board.objects.all()
+            output=family.filter(title__icontains=title)
 
         except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "교통\운전":
          try:
-            output=Traffic_Board.objects.get(title=title)
+            traffic=Traffic_Board.objects.all()
+            output=traffic.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "국가 및 지자체":
          try:
-            output=Government_Board.objects.get(title=title)
+            government=Government_Board.objects.all()
+            output=government.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
  
     elif cat_name == "근로\노동":
          try:
-            output=Labor_Board.objects.get(title=title)
+           labor=Labor_Board.objects.all()
+           output=labor.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "금융\금전":
          try:
-            output=Financial_Board.objects.get(title=title)
+           financial=Financial_Board.objects.all()
+           output=financial.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "무역\출입국":
          try:
-            output=Trade_Board.objects.get(title=title)
+            trade=Trade_Board.objects.all()
+            output=trade.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "문화\여가생활":
          try:
-            output=Leisure.objects.get(title=title)
-
+            leisure=Leisure_Board.objects.all()
+            output=leisure.filter(title__icontains=title)
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "민형사\소송":
          try:
-            output=Lawsuit_Board.objects.get(title=title)
+            lawsuit=Lawsuit_Board.objects.all()
+            output=lawsuit.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "복지":
          try:
-            output=Welfare_Board.objects.get(title=title)
+            welfare=Welfare_Board.objects.all()
+            output=welfare.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "부동산\임대차":
          try:
-            output=Estate_Board.objects.get(title=title)
+            estate=Estate_Board.objects.all()
+            output=estate.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "사업":
          try:
-            output=Business_Board.objects.get(title=title)
+            business=Business_Board.objects.all()
+            output=business.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "사회안전\범죄":
          try:
-            output=Crime_Board.objects.get(title=title)
+            crime=Crime_Board.objects.all()
+            output=crime.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "소비자":
          try:
-            output=Client_Board.objects.get(title=title)
+            client=Client_Board.objects.all()
+            output=client.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "아동 청소년\교육":
          try:
-            output=Children_Board.objects.get(title=title)
+            children=Children_Board.objects.all()
+            output=children.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "정보통신\기술":
          try:
-            output=Information_Board.objects.get(title=title)
+            information=Information_Board.objects.all()
+            output=information.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "창업":
          try:
-            output=Startup_Board.objects.get(title=title)
+            startup=Startup_Board.objects.all()
+            output=startup.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "환경\에너지":
          try:
-            output=Eco_Board.objects.get(title=title)
+           eco=Eco_Board.objects.all()
+           output=eco.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "국방\보훈":
         try:
-            output=Army_Board.objects.get(title=title)
+            army=Army_Board.objects.all()
+            output=army.filter(title__icontains=title)
 
         except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
@@ -1351,9 +1372,16 @@ def board_detail(request,post_id,cat_name):
     elif topic == "국방\보훈":
         board=Army_Board.objects.get(id=post_id)
     cat_name=cat_name
-
+    judge=None
+    if board.scrap.filter(username=request.user.username).exists():
+                judge=True
+               
+    else:
+               judge=False
+                
+       
     
-    return render(request,'board_detail.html',{'board':board,'cat_name':cat_name})
+    return render(request,'board_detail.html',{'board':board,'cat_name':cat_name,'judge':judge})
 
 def detail_scrap(request,post_id,cat_name):
     topic=cat_name
@@ -1396,10 +1424,13 @@ def detail_scrap(request,post_id,cat_name):
     elif topic == "국방\보훈":
         post=Army_Board.objects.get(id=post_id)
     
+    
     if post.scrap.filter(username=request.user.username).exists():
                 post.scrap.remove(request.user)    
+               
     else:
                 post.scrap.add(request.user)
+                
        
     post.save()
-    return redirect('board_detail', post_id, cat_name )
+    return redirect('board_detail', post_id, cat_name)

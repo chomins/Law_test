@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% if error %}
+{{error}}
+{% endif %}
 <body>
     
-    <h1 style="text-align: center; font-size: 10em; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; ">Phmp Law !</h1>
+    <h1 style="text-align: center; font-size: 10em; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; ">Pamph Law !</h1>
     <br>
     <br>
         <div class="container">
@@ -20,7 +22,9 @@
               <div class="row">
                 <div class="col" style="text-align: center;">
                     <div class="form-group">
+                      
                  <input type="password" name="password1" id="password1" class="inpt" required="required" placeholder="Your password" size="50" >
+
                 </div>
                 </div>
               </div>
@@ -28,7 +32,9 @@
               <div class="row">
                 <div class="col" style="text-align: center;">
                 <div class="form-group">
-                 <input type="password" name="password2" id="password2" class="inpt" required="required" placeholder="Check Your password" size="50" >
+
+                 <input type="password" name="password2" id="password" class="inpt" required="required" placeholder="Check Your password" size="50" >
+
                 </div>
                 </div>
               </div>

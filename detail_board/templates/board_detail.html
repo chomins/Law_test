@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<div class="container" style="margin-top:40px;">
-    <div class="row">
-      <div class="col"><h2>{{board.title}}</h2></div>
-    </div>
-    <div class="row">
-      <div class="col"><p>
-        <strong>질문</strong><br>{{board.question}}
-      </p></div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p>
-                <strong>답변</strong><br>{{board.answer}}
-            </p></div>
-      </div>
-      <strong>관련생활분야</strong><br>
-      {{board.relevant_area}}<br>
-      <strong>관련법령</strong><br>
-      {{board.relevant_rule}}<br>
-      <a href="{% url 'detail_scrap' board.id cat_name %}">scrap</a>
+<div class="container" style="margin-top: 70px; margin-bottom: 120px;">
+  <div class="row">
+     <h1>{{board.title}}</h1>
+  </div>
+  <hr>
+  <div class="row">
+      <p style="font-size: 2em;">Q. <span style="font-size:0.6em">{{board.question}}</span></p>
+  </div>
+  <div class="row"> 
+      <p style="font-size: 2em;">A. <span style="font-size:0.6em"> {{board.answer}}</span></p>
+  </div>
+  <div class="row">
+    <p style="font-size: 1em; font-weight: bold;">관련생활분야-> <span style="font-size:0.7em">{{board.relevant_area}}</span></p>   
+  </div>
+  <div class="row">
+    <p style="font-size: 1em; font-weight: bold;">관련법령-> <span style="font-size:0.7em">{{board.relevant_rule}}</span></p>   
+  </div>
+  <div class="row" style="position: absolute; left: 78%;">
+    {%if user.is_authenticated%}
+    {% if judge == False %}
+    <a href="{% url 'detail_scrap' board.id cat_name %}" style="color: black;" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1088px-Five-pointed_star.svg.png" width="40px" height="40px;" title="스크랩하기" ></a>
+    {% else %}
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Five_Pointed_Star_Solid.svg/815px-Five_Pointed_Star_Solid.svg.png" title="스크랩이 완료되었습니다." width="40px" height="40px;" >
+    {% endif %}
+    {% endif %}
   </div>
 
+</div>
 
 {% endblock %}
