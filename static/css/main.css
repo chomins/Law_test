@@ -155,3 +155,7 @@ header > .signin {
 	color:#555;
 }
 
+a:checked {
+	background-color: red;
+  }
+
