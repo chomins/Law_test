@@ -68,7 +68,7 @@ def family_board(request):
               
                     
     F_boards=Family_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='가정법률'
@@ -134,7 +134,7 @@ def traffic_board(request):
                     F_board.catagory='교통\운전'
                     F_board.save()
     F_boards=Traffic_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='교통\운전'
@@ -200,7 +200,7 @@ def government_board(request):
                     F_board.catagory='국가 및 지자체'
                     F_board.save()
     F_boards=Government_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='국가 및 지자체'
@@ -266,7 +266,7 @@ def army_board(request):
                     F_board.catagory='국방\보훈'
                     F_board.save()
     F_boards=Army_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='국방\보훈'
@@ -332,7 +332,7 @@ def labor_board(request):
                     F_board.catagory='근로\노동'
                     F_board.save()
     F_boards=Labor_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='근로\노동'
@@ -398,7 +398,7 @@ def financial_board(request):
                     F_board.catagory='금융\금전'
                     F_board.save()
     F_boards=Financial_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='금융\금전'
@@ -464,7 +464,7 @@ def trade_board(request):
                     F_board.catagory='무역\출입국'
                     F_board.save()
     F_boards=Trade_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='무역\출입국'
@@ -530,7 +530,7 @@ def leisure_board(request):
                     F_board.catagory='문화\여가생활'
                     F_board.save()
     F_boards=Leisure_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='문화\여가생활'
@@ -597,7 +597,7 @@ def lawsuit_board(request):
                     F_board.catagory='민형사\소송'
                     F_board.save()
     F_boards=Lawsuit_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='민형사\소송'
@@ -663,7 +663,7 @@ def welfare_board(request):
                     F_board.catagory='복지'
                     F_board.save()
     F_boards=Welfare_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='복지'
@@ -729,7 +729,7 @@ def estate_board(request):
                     F_board.catagory='부동산\임대차'
                     F_board.save()
     F_boards=Estate_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='부동산\임대차'
@@ -794,7 +794,7 @@ def business_board(request):
                     F_board.catagory='사업'
                     F_board.save()
     F_boards=Business_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='사업'
@@ -859,7 +859,7 @@ def crime_board(request):
                     F_board.catagory='사회안전\범죄'
                     F_board.save()
     F_boards=Crime_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='사회안전\범죄'
@@ -924,7 +924,7 @@ def client_board(request):
                     F_board.catagory='소비자'
                     F_board.save()
     F_boards=Client_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='소비자'
@@ -989,7 +989,7 @@ def children_board(request):
                     F_board.catagory='아동 청소년\교육'
                     F_board.save()
     F_boards=Children_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='아동 청소년\교육'
@@ -1055,7 +1055,7 @@ def information_board(request):
                     F_board.catagory='정보통신\기술'
                     F_board.save()
     F_boards=Information_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='정보통신\기술'
@@ -1120,7 +1120,7 @@ def startup_board(request):
                     F_board.catagory='창업'
                     F_board.save()
     F_boards=Startup_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='창업'
@@ -1186,7 +1186,7 @@ def eco_board(request):
                     F_board.catagory='환경\에너지'
                     F_board.save()
     F_boards=Eco_Board.objects.all()
-    paginator = Paginator(F_boards,7)
+    paginator = Paginator(F_boards,10)
     page = request.GET.get('page')
     lb= paginator.get_page(page)
     cat_name='환경\에너지'

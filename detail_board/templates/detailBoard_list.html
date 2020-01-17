@@ -5,8 +5,8 @@
 
 
 
-<div style="display: flex; justify-content: space-between;">
-    <div style="margin-left:40px ;">
+<div div class="container-fluid" style="display: flex; justify-content: space-between;">
+    <div style="margin-top:40px; margin-left: 40px; margin-bottom: 70px;">
         <div class="col" >
             <ul class="list-group">
                 <li class="list-group-item"><a href="{% url 'family_board' %}">가정법률</a></li>
@@ -31,31 +31,37 @@
         </div>
     </div>
 
-    <div class="container" style="padding-bottom:70px; width: 100%; margin-right: 400px;">
-        <div class="row">
-            <form method="POST" action="{% url 'search'%}" style="padding-bottom:0px;">
+    <div class="container" style="padding-bottom:70px; width: 100%; margin-right: 400px; ">
+      
+        <div class="row" >
+            <form method="POST" action="{% url 'search'%}" style="padding-bottom:0px; margin-top: 10px; position: absolute; left: 62%; ">
                 {% csrf_token %}
                 <div class="input-group mb-3" style="width: 350px; padding-bottom: 0px;">
                     <input type="hidden" name="identity" value={{cat_name}}>
                     <input type="text" class="form-control" placeholder="카테고리" aria-label="Recipient's username"
                         aria-describedby="button-addon2" name="search_data" required="required">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                            style="padding-top:0px; border-color: black;">Serch</button>
+                        <button type="submit" id="button-addon2" style="border: none; margin-left: 8px; margin-bottom: 4px;">
+                            <img src="https://www.pinclipart.com/picdir/middle/91-919100_search-prism-learning-solutions-search-icon-svg-free.png" alt="" width="40px" height="40px">
+                        </button>
                     </div>
                 </div>
             </form>
             {% if error %}
+
+            {{error}}<br>
+            {% endif %}
+
 {{error}}<br>
 {% endif %}
 {% for out in output %}
 <a href="{% url 'board_detail' out.id out.catagory %}">{{out.title}}</a></li>
 {% endfor %}
-
         </div>
         <div class="row">
             <div class="col">
                 <h5 style="margin-bottom: 5px;">{{cat_name}}</h5>
+                <br>
                 <ul class="list-group">
                     {% for i in F_boards %}
                     <li class="list-group-item" style="padding:28px;"><a
