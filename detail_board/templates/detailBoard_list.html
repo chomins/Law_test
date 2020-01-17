@@ -50,8 +50,6 @@
 
 
             <div class="container-fluid" style="margin-top: 70px;">
-
-    
                 <ul class="list-group">
                     {% for out in output %}
                     <li class="list-group-item "><a href="{% url 'board_detail' out.id out.catagory %}">{{out.title}}</a></li>
@@ -59,12 +57,6 @@
                 </ul>
             
             </div>
-
-
-
-{% for out in output %}
-<a href="{% url 'board_detail' out.id out.catagory %}">{{out.title}}</a></li>
-{% endfor %}
 
         </div>
         <div class="row">

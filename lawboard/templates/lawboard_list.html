@@ -61,6 +61,7 @@
         {%endif%}
     </div>
     <br>
+    {%if user.is_authenticated%}
     <div class="row">
         <div class="col align-self-end" style="text-align: right;">
             <a href="{% url 'lb_new'%}">
@@ -68,6 +69,7 @@
             </a>
         </div>
     </div>
+    {%endif%}
 
 </div>
 {%endblock%}
