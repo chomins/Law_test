@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% if error %}
+{{error}}
+{% endif %}
 <body>
     
     <h1 style="text-align: center; font-size: 10em; font-family: 'Roboto', sans-serif; font-family: 'Abril Fatface', cursive; ">Pamph Law !</h1>
