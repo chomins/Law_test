@@ -48,9 +48,9 @@
             {% if error %}
 {{error}}<br>
 {% endif %}
-{{output.title}}<br>
-{{output.question}}<br>
-{{output.answer}}<br>
+{% for out in output %}
+<a href="{% url 'board_detail' out.id out.catagory %}">{{out.title}}</a></li>
+{% endfor %}
 
         </div>
         <div class="row">
