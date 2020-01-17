@@ -48,8 +48,15 @@
                 </div>
             </form>
             {% if error %}
+
             {{error}}<br>
             {% endif %}
+
+{{error}}<br>
+{% endif %}
+{% for out in output %}
+<a href="{% url 'board_detail' out.id out.catagory %}">{{out.title}}</a></li>
+{% endfor %}
         </div>
         <div class="row">
             <div class="col">
