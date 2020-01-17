@@ -19,7 +19,13 @@
     <p style="font-size: 1em; font-weight: bold;">관련법령-> <span style="font-size:0.7em">{{board.relevant_rule}}</span></p>   
   </div>
   <div class="row" style="position: absolute; left: 78%;">
+    {%if user.is_authenticated%}
+    {% if judge == False %}
     <a href="{% url 'detail_scrap' board.id cat_name %}" style="color: black;" >스크랩</a>
+    {% else %}
+    <p>스크랩 되었습니다.</p>
+    {% endif %}
+    {% endif %}
   </div>
 
 </div>

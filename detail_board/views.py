@@ -1372,9 +1372,16 @@ def board_detail(request,post_id,cat_name):
     elif topic == "국방\보훈":
         board=Army_Board.objects.get(id=post_id)
     cat_name=cat_name
-
+    judge=None
+    if board.scrap.filter(username=request.user.username).exists():
+                judge=True
+               
+    else:
+               judge=False
+                
+       
     
-    return render(request,'board_detail.html',{'board':board,'cat_name':cat_name})
+    return render(request,'board_detail.html',{'board':board,'cat_name':cat_name,'judge':judge})
 
 def detail_scrap(request,post_id,cat_name):
     topic=cat_name
@@ -1417,10 +1424,13 @@ def detail_scrap(request,post_id,cat_name):
     elif topic == "국방\보훈":
         post=Army_Board.objects.get(id=post_id)
     
+    
     if post.scrap.filter(username=request.user.username).exists():
                 post.scrap.remove(request.user)    
+               
     else:
                 post.scrap.add(request.user)
+                
        
     post.save()
-    return redirect('board_detail', post_id, cat_name )
+    return redirect('board_detail', post_id, cat_name)
