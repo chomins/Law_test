@@ -1201,110 +1201,131 @@ def search(request):
     error=''
     if cat_name == "가정법률":
         try:
-            output=Family_Board.objects.get(title=title)
+            family=Family_Board.objects.all()
+            output=family.filter(title__icontains=title)
 
         except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "교통\운전":
          try:
-            output=Traffic_Board.objects.get(title=title)
+            traffic=Traffic_Board.objects.all()
+            output=traffic.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "국가 및 지자체":
          try:
-            output=Government_Board.objects.get(title=title)
+            government=Government_Board.objects.all()
+            output=government.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
  
     elif cat_name == "근로\노동":
          try:
-            output=Labor_Board.objects.get(title=title)
+           labor=Labor_Board.objects.all()
+           output=labor.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "금융\금전":
          try:
-            output=Financial_Board.objects.get(title=title)
+           financial=Financial_Board.objects.all()
+           output=financial.filter(title__icontains=title)
+
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "무역\출입국":
          try:
-            output=Trade_Board.objects.get(title=title)
+            trade=Trade_Board.objects.all()
+            output=trade.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "문화\여가생활":
          try:
-            output=Leisure.objects.get(title=title)
-
+            leisure=Leisure_Board.objects.all()
+            output=leisure.filter(title__icontains=title)
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "민형사\소송":
          try:
-            output=Lawsuit_Board.objects.get(title=title)
+            lawsuit=Lawsuit_Board.objects.all()
+            output=lawsuit.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "복지":
          try:
-            output=Welfare_Board.objects.get(title=title)
+            welfare=Welfare_Board.objects.all()
+            output=welfare.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "부동산\임대차":
          try:
-            output=Estate_Board.objects.get(title=title)
+            estate=Estate_Board.objects.all()
+            output=estate.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "사업":
          try:
-            output=Business_Board.objects.get(title=title)
+            business=Business_Board.objects.all()
+            output=business.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "사회안전\범죄":
          try:
-            output=Crime_Board.objects.get(title=title)
+            crime=Crime_Board.objects.all()
+            output=crime.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "소비자":
          try:
-            output=Client_Board.objects.get(title=title)
+            client=Client_Board.objects.all()
+            output=client.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "아동 청소년\교육":
          try:
-            output=Children_Board.objects.get(title=title)
+            children=Children_Board.objects.all()
+            output=children.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "정보통신\기술":
          try:
-            output=Information_Board.objects.get(title=title)
+            information=Information_Board.objects.all()
+            output=information.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "창업":
          try:
-            output=Startup_Board.objects.get(title=title)
+            startup=Startup_Board.objects.all()
+            output=startup.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "환경\에너지":
          try:
-            output=Eco_Board.objects.get(title=title)
+           eco=Eco_Board.objects.all()
+           output=eco.filter(title__icontains=title)
 
          except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
     elif cat_name == "국방\보훈":
         try:
-            output=Army_Board.objects.get(title=title)
+            army=Army_Board.objects.all()
+            output=army.filter(title__icontains=title)
 
         except ObjectDoesNotExist:
             error="검색물이 존재하지 않습니다."
