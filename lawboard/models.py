@@ -6,6 +6,9 @@ class LawBoard(models.Model):
     title = models.CharField(max_length=100)
     pub_date = models.DateTimeField('Date published', null = True)
     writer = models.ForeignKey(User,on_delete = models.CASCADE)
+
+    scrap_id=models.IntegerField(null=True)
+    catagory= models.CharField(max_length=100,null=True)
     body = models.TextField()
     scrap  = models.ManyToManyField(User, blank= True, related_name="LawBoard_scrap")
     

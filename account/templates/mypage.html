@@ -1,25 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-    <aside style="width:20% ; align-items:center ">
+    <aside style="width:20% ; align-items:center ; ">
         <div><img style="width: 80% ; border-radius: 70px;" src="https://media.istockphoto.com/vectors/profile-picture-vector-illustration-vector-id587805078?b=1&k=6&m=587805078&s=170667a&h=6CPLPoI_s9sR-uif-KIdSyn8_hn95sNDAkWjEGRzL8A=" alt=""></div>
         <br>
         <div><p>{{request.user.username}}님 환영합니다</p></div>
         
     </aside>
     <article style="width:70% ; margin-top: 20px;">
-        <div>
+        <div style="height: 250px;">
         <h3>스크랩한 게시글</h3>
         {%for i in scrapped_lawboard%}
         <hr>
         <a href="{%url 'lb_detail' i.id%}">{{i.title}}</a>
         {%endfor%}
         <hr>
-        </div>
-        <div>
-        <h3>스크랩한 법령</h3>
-        
 
+        <div class="lawboards111">
+            {%if scrapped_lawboard.has_previous%}
+            <a href="?page=1">First</a>
+            <a href="?page={{scrapped_lawboard.previous_page_number}}">Previous</a>
+            {%endif%}
+    
+            <span>{{scrapped_lawboard.number}}</span>
+            <span>of</span>
+            <span>{{scrapped_lawboard.paginator.num_pages}}</span>
+    
+            {%if scrapped_lawboard.has_next%}
+            <a href="?page={{scrapped_lawboard.next_page_number}}">Next</a>
+            <a href="?page={{scrapped_lawboard.paginator.num_pages}}">Last</a>
+            {%endif%}
+        </div>
+        </div>
+
+
+        <div style="height: 250px;">
+        <h3>스크랩한 법령</h3>
+        {% for j in tmp%}
+        <hr>
+        <a href="{% url 'board_detail' j.id j.catagory %}">{{j.title}}</a>
+        {%endfor%}
+        <hr>
+        <div class="lawboards111">
+            {%if tmp.has_previous%}
+            <a href="?page=1">First</a>
+            <a href="?page={{tmp.previous_page_number}}">Previous</a>
+            {%endif%}
+    
+            <span>{{tmp.number}}</span>
+            <span>of</span>
+            <span>{{tmp.paginator.num_pages}}</span>
+    
+            {%if tmp.has_next%}
+            <a href="?page={{tmp.next_page_number}}">Next</a>
+            <a href="?page={{tmp.paginator.num_pages}}">Last</a>
+            {%endif%}
+        </div>
         </div>
 
 

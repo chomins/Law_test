@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
 from detail_board.models import *
+from django.core.paginator import Paginator
 
 def login(request):
     if request.method == 'POST':
@@ -45,7 +46,7 @@ def logout(request):
 def mypage(request, pk):
     mypage = User.objects.get(pk=pk)
     lawboard = User.objects.get(username= request.user.username)
-    scrapped_lawboard = lawboard.LawBoard_scrap.all()
+    
     
     scrapped_family=request.user.family_scrap.all()
     scrapped_traffic=request.user.traffic_scrap.all()
@@ -61,15 +62,43 @@ def mypage(request, pk):
     scrapped_business=request.user.business_scrap.all()
     scrapped_crime=request.user.crime_scrap.all()
     scrapped_client=request.user.client_scrap.all()
+    scrapped_children = request.user.children_scrap.all()
     scrapped_information=request.user.information_scrap.all()
     scrapped_startup=request.user.startup_scrap.all()
     scrapped_eco=request.user.eco_scrap.all()
-    
-    tmp=scrapped_family+scrapped_traffic
-    print(tmp)
 
 
-    return render(request, 'mypage.html', {'mypage':mypage , 'scrapped_lawboard': scrapped_lawboard})
+    scrapped_family.union(scrapped_traffic)
+    scrapped_family.union(scrapped_government)
+    scrapped_family.union(scrapped_army)
+    scrapped_family.union(scrapped_labor)
+    scrapped_family.union(scrapped_financial)
+    scrapped_family.union(scrapped_trade)
+    scrapped_family.union(scrapped_leisure)
+    scrapped_family.union(scrapped_lawsuit)
+    scrapped_family.union(scrapped_welfare)
+    scrapped_family.union(scrapped_estate)
+    scrapped_family.union(scrapped_business)
+    scrapped_family.union(scrapped_crime)
+    scrapped_family.union(scrapped_client)
+    scrapped_family.union(scrapped_information)
+    scrapped_family.union(scrapped_startup)
+    scrapped_family.union(scrapped_eco)
+    scrapped_family.union(scrapped_children)
+
+
+    scrapped_lawboard = lawboard.LawBoard_scrap.all()
+    tmp = scrapped_family
+
+    paginator1 = Paginator(scrapped_lawboard,4)
+    page = request.GET.get('page')
+    lbscrap = paginator1.get_page(page)
+
+    paginator2 = Paginator(tmp,4)
+    page = request.GET.get('page')
+    lscrap = paginator2.get_page(page)
+    return render(request, 'mypage.html', {'mypage':mypage , 'scrapped_lawboard': lbscrap, 'tmp': lscrap})
+
 
 
 
